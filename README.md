@@ -8,7 +8,7 @@ Articles are held in their own sub-folders.  For example, this particular reposi
 2. Create your own subfolder for your article.
 3. The main markdown file for an article is usually named `index.md` inside the sub-folder.  (See the `Sample` sub-folder in this project for an example).
 4. Your article sub-folder should be self-contained with the `index.md` file, the optional `index.css` stylesheet, and any image assets needed.
-5. Once you have at least a single commit to your forked repository, you can preview the results of your changes at the compiled version of these pages at: `http://YOUR-GITHUB-USERNAME.github.io/PIXLSUS/YOUR-SUBFOLDER-NAME.`<br/>
+5. Once you have at least a single commit to your forked repository, you can preview the results of your changes at the compiled version of these pages at: `http://YOUR-GITHUB-USERNAME.github.io/PIXLSUS/YOUR-SUBFOLDER-NAME`<br/>
 For example, to view the main page here, you can go to: http://patdavid.github.io/PIXLSUS/<br/>
 and to view the `Sample` post, simply go to: http://patdavid.github.io/PIXLSUS/Sample/
 7. 
