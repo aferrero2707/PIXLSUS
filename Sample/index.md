@@ -43,9 +43,16 @@ These parameters *should* be mostly self-explanatory.  The `lede-img` is the bac
 ## Markdown
 Some simple markdown for reference.
 
-```
+<pre>
 Text that is not separated by a blank line will be consolidated into a single paragraph.
 So paragraph breaks are noted through the use of a blank line.
 
 This should be a new paragraph now.
-```
+</pre>
+
+Will render as this:
+
+Text that is not separated by a blank line will be consolidated into a single paragraph.
+So paragraph breaks are noted through the use of a blank line.
+
+This should be a new paragraph now.
