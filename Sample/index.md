@@ -46,6 +46,8 @@ Some simple markdown for reference.
 <pre>
 Text that is not separated by a blank line will be consolidated into a single paragraph.
 So paragraph breaks are noted through the use of a blank line.
+Newline breaks will not break it up.
+These are all one paragraph.
 
 This should be a new paragraph now.
 </pre>
