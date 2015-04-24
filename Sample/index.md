@@ -150,4 +150,9 @@ Will render as:
 
 ### Commands
 When commands need to be referenced, there is a special class used called `Cmd`:
+
+&lt;span class="Cmd">Colors → Desaturate…&lt;/span>
+
+Which will look like:
+
 <span class="Cmd">Colors → Desaturate…</span>
