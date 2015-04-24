@@ -44,9 +44,9 @@ These parameters *should* be mostly self-explanatory.  The `lede-img` is the bac
 Some simple markdown for reference.
 
 <pre>
-Text that is not separated by a blank line will be consolidated into a single paragraph.
-So paragraph breaks are noted through the use of a blank line.
-Newline breaks will not break it up.
+Text that is not separated by a blank line will be consolidated.
+Paragraph breaks are noted through the use of a blank line.
+Newlines will not break it up.
 These are all one paragraph.
 
 This should be a new paragraph now.
@@ -54,9 +54,33 @@ This should be a new paragraph now.
 
 Will render as this:
 
-Text that is not separated by a blank line will be consolidated into a single paragraph.
-So paragraph breaks are noted through the use of a blank line.
-Newline breaks will not break it up.
+Text that is not separated by a blank line will be consolidated.
+Paragraph breaks are noted through the use of a blank line.
+Newlines will not break it up.
 These are all one paragraph.
 
 This should be a new paragraph now.
+
+Some simple formatting rules for markdown,
+
+<pre>
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+</pre>
+all render as:
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+
+Formatting is straightforward:
+
+`*Emphasis*` renders as: *Emphasis*
+
+`**Even more**` renders as: **Even more**
+
+`[Link Text](https://pixls.us)` renders as [Link Text](https://pixls.us)
