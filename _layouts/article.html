@@ -38,7 +38,7 @@
                     {% if page.lede-attribution %}
                         {{ page.lede-attribution }}
                     {% else %}
-                        <a href='https://www.flickr.com/photos/patdavid/14490236250/'>Nikki</a> by <a href='http://blog.patdavid.net'>Pat David</a></div>
+                        by <a href='http://blog.patdavid.net'>Pat David</a></div>
                     {% endif %}
             </section>
 
@@ -48,8 +48,8 @@
                     <div class="column two-thirds">
                         <div id="main" class="article-title">
                         <!-- Begin article content -->
-                            <h1 id="title">TITLE</h1>
-                             <p id="subtitle">SUB-TITLE</p> 
+                        <h1 id="title">{% if page.title %}{{ page.title }}{% else %}TITLE{% endif %}</h1>
+                        <p id="subtitle">{% if page.sub-title %}{{ page.sub-title }}{% endif %}</p> 
                         </div>
                     </div>
                 </div>

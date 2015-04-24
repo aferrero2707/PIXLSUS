@@ -4,7 +4,7 @@ title: TITLE
 sub-title: SUB-TITLE
 
 lede-img: 'Into the Fog.jpg'
-lede-attribution: 'Pat David'
+lede-attribution: "<a href='http://blog.patdavid.net'>Pat David</a>"
 
 author: "Pat David"
 author-bio: "A little bit about myself"
