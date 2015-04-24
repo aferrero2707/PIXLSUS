@@ -86,3 +86,17 @@ Formatting is straightforward:
 `[Link Text](https://pixls.us)` renders as [Link Text](https://pixls.us)
 
 `[Link Text](https://pixls.us "PIXLS.US is neat!")` renders as [Link Text](https://pixls.us "PIXLS.US is neat!") with a title.
+
+
+
+## PIXLS.US Specific Things
+There are a couple of things that I have setup for the site specifically.
+Particularly with images.
+
+Images are actually wrapped inside a `<figure>` element, so an image would look like this:
+
+<pre>
+<figure>
+<img src="Into the Fog.jpg" alt="Into the Fog"/>
+</figure>
+</pre>
