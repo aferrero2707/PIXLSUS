@@ -39,4 +39,13 @@ These parameters *should* be mostly self-explanatory.  The `lede-img` is the bac
 
 `lede-attribution: "<a href='http://blog.patdavid.net'>Pat David</a>"` 
 
-for instance.
+
+## Markdown
+Some simple markdown for reference.
+
+```
+Text that is not separated by a blank line will be consolidated into a single paragraph.
+So paragraph breaks are noted through the use of a blank line.
+
+This should be a new paragraph now.
+```
