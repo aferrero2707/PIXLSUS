@@ -16,7 +16,7 @@ and to view the `Sample` post, simply go to: http://patdavid.github.io/PIXLSUS/S
 
 
 To create a new directory directly in the web-interface, hit the "+" to create a new file in the repository, then simply use forward slashes in the filename field to automatically create a folder:
-<div><img src="/styles/create-folder.gif" alt=""/></div>
+<div style="border: dashed 1px gray;"><img src="/styles/create-folder.gif" alt=""/></div>
 3. The article markdown file is *normally* named `index.md`.
 4. Remember to include front-matter in this file:
 ```
