@@ -122,3 +122,19 @@ Which would produce:
 <img src="Into the Fog.jpg" alt="Into the Fog"/>
 <figcaption>Into the Fog by Pat David</figcaption>
 </figure>
+
+There is also a method for increasing an image size to give it more prominence on the page.  Adding the class `big-vid` to the figure element will increase the image size:
+
+<pre>
+&lt;figure class="big-vid">
+&lt;img src="Into the Fog.jpg" alt="Into the Fog"/>
+&lt;figcaption>Into the Fog by Pat David&lt;/figcaption>
+&lt;/figure>
+</pre>
+
+Will render as:
+
+<figure class="big-vid">
+<img src="Into the Fog.jpg" alt="Into the Fog"/>
+<figcaption>Into the Fog by Pat David</figcaption>
+</figure>
