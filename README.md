@@ -13,6 +13,7 @@ For example, to view the main page here, you can go to: http://patdavid.github.i
 and to view the `Sample` post, simply go to: http://patdavid.github.io/PIXLSUS/Sample/
 
  > Before the preview pages will be built you must have at least one commit in your fork (creating your own sub-folder and index.md file should be enough)
+ 
  > You should give it a few minutes to build the first time (though subsequent builds should be faster).
 
 
