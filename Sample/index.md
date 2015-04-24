@@ -149,10 +149,19 @@ Will render as:
 
 
 ### Commands
-When commands need to be referenced, there is a special class used called `Cmd`:
+When commands need to be referenced, there is a special class used called `Cmd` to help differentiate the command from the surrounding text:
 
 &lt;span class="Cmd">Colors → Desaturate…&lt;/span>
 
 Which will look like:
 
 <span class="Cmd">Colors → Desaturate…</span>
+
+
+
+### Aside
+The same is true for any 'asides' that need to be offset from the actual text:
+
+&lt;p class="aside">This is some section of text that needs to be offset from the rest in some way.&lt;p>
+
+<p class="aside">This is some section of text that needs to be offset from the rest in some way.</p>
