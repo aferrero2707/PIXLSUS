@@ -11,7 +11,8 @@ Articles are held in their own sub-folders.  For example, this particular reposi
 5. Once you have at least a single commit to your forked repository, you can preview the results of your changes at the compiled version of these pages at: `http://YOUR-GITHUB-USERNAME.github.io/PIXLSUS/YOUR-SUBFOLDER-NAME`<br/>
 For example, to view the main page here, you can go to: http://patdavid.github.io/PIXLSUS/<br/>
 and to view the `Sample` post, simply go to: http://patdavid.github.io/PIXLSUS/Sample/
-<div style="color: #666;">Just a side note</div>
+
+ > Just a side note
 7. 
 
 
