@@ -91,6 +91,8 @@ Formatting is straightforward:
 
 > Block quote offset text.
 
+Which is just a fancier looking blockquote.
+
 
 ### HTML
 Markdown will also just pass normal HTML markup straight through without a problem, so it's possible to mix writing straight html markup along with markdown.  This is something we use in the next section.
