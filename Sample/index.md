@@ -93,6 +93,7 @@ Formatting is straightforward:
 There are a couple of things that I have setup for the site specifically.
 Particularly with images.
 
+### Images
 Images are actually wrapped inside a `<figure>` element, so an image would look like this:
 
 <pre>
@@ -123,6 +124,7 @@ Which would produce:
 <figcaption>Into the Fog by Pat David</figcaption>
 </figure>
 
+#### Bigger Images
 There is also a method for increasing an image size to give it more prominence on the page.  Adding the class `big-vid` to the figure element will increase the image size:
 
 <pre>
@@ -138,3 +140,5 @@ Will render as:
 <img src="Into the Fog.jpg" alt="Into the Fog"/>
 <figcaption>Into the Fog by Pat David</figcaption>
 </figure>
+
+### Commands
