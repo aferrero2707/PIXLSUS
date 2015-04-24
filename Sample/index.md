@@ -96,7 +96,7 @@ Particularly with images.
 Images are actually wrapped inside a `<figure>` element, so an image would look like this:
 
 <pre>
-<figure>
-<img src="Into the Fog.jpg" alt="Into the Fog"/>
-</figure>
+&lt;figure>
+&lt;img src="Into the Fog.jpg" alt="Into the Fog"/>
+&lt;/figure>
 </pre>
