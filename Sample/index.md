@@ -84,3 +84,4 @@ Formatting is straightforward:
 `**Even more**` renders as: **Even more**
 
 `[Link Text](https://pixls.us)` renders as [Link Text](https://pixls.us)
+`[Link Text](https://pixls.us "PIXLS.US is neat!")` renders as [Link Text](https://pixls.us "PIXLS.US is neat!") with a title.
