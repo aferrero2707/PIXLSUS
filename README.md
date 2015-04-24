@@ -12,7 +12,7 @@ Articles are held in their own sub-folders.  For example, this particular reposi
 For example, to view the main page here, you can go to: http://patdavid.github.io/PIXLSUS/<br/>
 and to view the `Sample` post, simply go to: http://patdavid.github.io/PIXLSUS/Sample/
 
- > Just a side note
+ > Before the preview pages will be built you must have at least one commit in your fork, and you should give it a few minutes to build the first time (though subsequent builds should be faster).
 7. 
 
 
