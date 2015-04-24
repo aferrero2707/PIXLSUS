@@ -106,3 +106,19 @@ Which would render as:
 <figure>
 <img src="Into the Fog.jpg" alt="Into the Fog"/>
 </figure>
+
+To add a caption to an image, simply add the `<figcaption>` tag:
+
+<pre>
+&lt;figure>
+&lt;img src="Into the Fog.jpg" alt="Into the Fog"/>
+&lt;figcaption>Into the Fog by Pat David&lt;/figcaption>
+&lt;/figure>
+</pre>
+
+Which would produce:
+
+<figure>
+<img src="Into the Fog.jpg" alt="Into the Fog"/>
+<figcaption>Into the Fog by Pat David</figcaption>
+</figure>
