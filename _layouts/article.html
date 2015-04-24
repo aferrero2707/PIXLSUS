@@ -19,7 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<style type="text/css" media="all">
-		 #lede { background-image: url('https://lh3.googleusercontent.com/-NEKW7KPTLh0/U_lW3AoF3yI/AAAAAAAARN8/b2DSir8MK0s/s0/Nikki-after-opt.jpg'); } 
+		 //#lede { background-image: url('https://lh3.googleusercontent.com/-NEKW7KPTLh0/U_lW3AoF3yI/AAAAAAAARN8/b2DSir8MK0s/s0/Nikki-after-opt.jpg'); } 
+         {%if page.lede-img %}#lede { background-image: url("{{ page.lede-img }}"); }{% endif %}
 	</style>
 
   </head>
