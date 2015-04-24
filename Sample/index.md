@@ -87,6 +87,9 @@ Formatting is straightforward:
 
 `[Link Text](https://pixls.us "PIXLS.US is neat!")` renders as [Link Text](https://pixls.us "PIXLS.US is neat!") with a title.
 
+`> Block quote offset text` will render as:
+
+> Block quote offset text.
 
 
 ### HTML
