@@ -14,4 +14,25 @@ layout: article
 ---
 
 This is what a markdown file will look like for [PIXLS.US](https://pixls.us).
-If you're just starting out, I recommend that you simply copy this file into your own sub-folder for your article.
+If you're just starting out, I recommend that you simply copy this file into your own sub-folder for your article and modify it as needed.
+
+
+
+## Front Matter
+At the top of this markdown file is some "front-matter" contained between a triplet of dashes:
+```
+---
+date:
+title:
+sub-title:
+
+lede-img:
+lede-attribution:
+
+author:
+author-bio:
+author-img:
+
+layout: article
+---
+```
