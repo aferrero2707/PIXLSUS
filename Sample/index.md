@@ -89,6 +89,11 @@ Formatting is straightforward:
 
 
 
+### HTML
+Markdown will also just pass normal HTML markup straight through without a problem, so it's possible to mix writing straight html markup along with markdown.  This is something we use in the next section.
+
+
+
 ## PIXLS.US Specific Things
 There are a couple of things that I have setup for the site specifically.
 Particularly with images.
@@ -141,4 +146,8 @@ Will render as:
 <figcaption>Into the Fog by Pat David</figcaption>
 </figure>
 
+
+
 ### Commands
+When commands need to be referenced, there is a special class used called `Cmd`:
+<span class="Cmd">Colors → Desaturate…</span>
