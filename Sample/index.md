@@ -26,7 +26,17 @@ At the top of this markdown file is some "front-matter" contained between a trip
 title:
 sub-title:
 
+lede-img:
+lede-attribution:
+
+author:
+author-bio:
+author-img:
 ---
 </pre>
 
+These parameters *should* be mostly self-explanatory.  The `lede-img` is the background image across the top of a post, and the `lede-attribution` is the text that will appear below and to the right of the image for attribution.  The `lede-attribution` can contain html elements inside quotes:
 
+`lede-attribution: "<a href='http://blog.patdavid.net'>Pat David</a>"` 
+
+for instance.
