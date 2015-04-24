@@ -19,21 +19,10 @@ If you're just starting out, I recommend that you simply copy this file into you
 
 
 ## Front Matter
-At the top of this markdown file is some "front-matter" contained between a triplet of dashes: `wait`
+At the top of this markdown file is some "front-matter" contained between a triplet of dashes.  This is the metadata for your post.
 
 ```
----
-date:
-title:
-sub-title:
-
-lede-img:
-lede-attribution:
-
-author:
-author-bio:
-author-img:
-
-layout: article
----
+Testing something
 ```
+
+
