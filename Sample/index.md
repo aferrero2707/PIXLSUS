@@ -13,4 +13,5 @@ author-img: ''
 layout: article
 ---
 
-This is a test of things.
+This is what a markdown file will look like for [PIXLS.US](https://pixls.us).
+If you're just starting out, I recommend that you simply copy this file into your own sub-folder for your article.
