@@ -100,3 +100,9 @@ Images are actually wrapped inside a `<figure>` element, so an image would look 
 &lt;img src="Into the Fog.jpg" alt="Into the Fog"/>
 &lt;/figure>
 </pre>
+
+Which would render as:
+
+<figure>
+<img src="Into the Fog.jpg" alt="Into the Fog"/>
+</figure>
