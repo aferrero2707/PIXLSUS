@@ -151,6 +151,14 @@ Will render as:
 <figcaption>Into the Fog by Pat David</figcaption>
 </figure>
 
+#### Image Sizes
+There are three main image sizes used on the site:
+
+* The smallest version has a max width of 640px.
+* The big-vid version has a max width of 960px.
+* Full-size images (preferably between 1650px to 2048px wide).
+
+When in doubt, simply include the full-size images (in case a larger size is wanted during editing).
 
 
 ### Commands
