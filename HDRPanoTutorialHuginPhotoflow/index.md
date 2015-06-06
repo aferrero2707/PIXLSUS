@@ -163,7 +163,7 @@ After clicking the "OK" button, a new layer will be added and the corresponding 
 
 <img src="pf_open_image_edit.png" width="576" height="348"> 
 
-## Layer masks: theory (a bit) and practice (a lot)
+### Layer masks: theory (a bit) and practice (a lot)
 
 For the moment, the new layer completely replaces the background image. This is not the desired result: instead, we want to keep the hills from the background layer and only take the clouds from the "_blended_fused.tif" version. In other words, we need a **layer mask**.
 
