@@ -75,7 +75,7 @@ Now go for a cup of coffee, and be patient... a panorama with three or five brac
 
 **TODO: add instructions for batch-processing in Darktable and RawTherapee.**
 
-# Stitching the shots into a seamless panorama with Hugin
+# Stitching the shots with Hugin
 Hugin is a powerful and free software suite for stitching multiple shots into a seamless panorama, and more. Under Linux, Hugin can be usually installed through the package manager of your distribution. In the case of Ubuntu-based distros it can be usually installed with
 
     sudo apt-get install hugin
