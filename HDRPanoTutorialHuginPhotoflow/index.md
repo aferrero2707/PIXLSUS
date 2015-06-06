@@ -113,7 +113,7 @@ We are now done with the preview window; it can be closed and we can go back to 
 
 The *Stitcher* tab has to be configured as in the image below, selecting *Exposure fused from any arrangement* and *Blended layers of similar exposure, without exposure correction*. I usually set the output format to *TIFF* to avoid compression artifacts.
 
-<img src="/uploads/default/143/085b7a1eed618aa0.png" width="592" height="500"> 
+<img src="hugin_5.png" width="592" height="500"> 
 
 The final act starts by clicking on the *Stitch!* button. The input images will be distorted, corrected for the lens vignetting and blended into seamless panoramas. The whole process is likely to take quite long, so it is probably a good opportunity for taking a pause...
 
@@ -134,8 +134,7 @@ The steps that I followed to go from one to the other can be more or less outlin
 
 The image below shows side-by-side three of the output images produced with Hugin at the end of the first part. The left part contains the brightest panorama, obtained by blending the shots taken at +1EV. The right part contains the darkest version, obtained from the shots taken at -1EV. Finally, the central part shows the result of running the **enfuse** program to combine the -1EV, 0EV and +1EV panoramas. 
 
-<img src="/uploads/default/original/1X/4f0a582a69c8fd4d662f0415824cfa559b5af27a.png" width="690" height="322">
-pano_exp_comp.png
+<img src="pano_exp_comp.png" width="690" height="322">
 
 ## Exposure blending in general
 In scenes that exhibit strong brightness variations, one often needs to combine different exposures in order to compress the dynamic range so that the overall contrast can be further tweaked without the risk of loosing details in the shadows or highlights.
@@ -143,29 +142,26 @@ In scenes that exhibit strong brightness variations, one often needs to combine 
 In this case, the name of the game is "seamless blending", i.e. combining the exposures in a way that looks natural, without visible transitions or halos.
 In our specific case, the easiest thing would be to simply combine the +1EV and -1EV images through some smooth transition, like in the example below.
 
-<img src="/uploads/default/original/1X/df860834755d759bbd7debfd0210421372dabcd9.png" width="690" height="322"> 
-pano_+1EV_-1EV_blend.png
+<img src="pano_+1EV_-1EV_blend.png" width="690" height="322"> 
+
 
 The result is not too bad, however it is very difficult to avoid some brightening of the bottom part of the clouds (or alternatively some darkening of the hills), something that will most likely look artificial even if the effect is subtle (our brain will recognize that something is wrong, even if one cannot clearly explain the reason...). We need something to "bridge" the two images, so that the transition looks more natural. 
 
 At this point it is good to recall that the last step performed by Hugin was to call the **enfuse** program to blend the three bracketed exposures. The enfuse output is somehow intermediate between the -1EV and +1EV versions, however a side-by-side comparison with the 0EV image reveals the subtle and sophisticated work done by the program: the foreground hill is brighter and the clouds are darker than in the 0EV version. And even more importantly, this job is done without triggering any alarm in your brain! Hence, the enfuse output is a perfect candidate to improve the transition between the hill and the sky.
 
-<img src="/uploads/default/original/1X/71735d05ae085d287dd8744c7e7bf64af60524ef.png" width="690" height="322"> 
-<img src="/uploads/default/original/1X/f52c16ab8c52684acf82df1814ab54b626d5d2f2.png" width="690" height="322"> 
-pano_enfuse.png
-pano_0EV.png
-*Caption: Enfuse output (click to see 0EV version)*
+<figure>
+<img src="pano_enfuse.png" data-swap-src="pano_0EV.png" alt="Final result" width="690" height="322"> 
+<figcaption> Enfuse output (click to see 0EV version) 
+</figcaption> </figure>
 
 ## Exposure blending in PhotoFlow
 It is time to put all the stuff together. First of all, we should open **PhotoFlow** and load the +1EV image. Next we need to add the enfuse output on top of it: for that you first need to add a new layer and choose the *Open image* tool from the dialog that will open up (see below).
 
-<img src="/uploads/default/original/1X/d895f96511e8ac18eb75996280ef71fd44f1d6af.png" width="690" height="415"> 
-pf_add_layer_edit.png
+<img src="pf_add_layer_edit.png" width="690" height="415"> 
 
 After clicking the "OK" button, a new layer will be added and the corresponding configuration dialog will be shown. There you can choose the name of the file to be added; in this case, choose the one ending with "_blended_fused.tif" among those created by Hugin:
 
-<img src="/uploads/default/original/1X/83c1321c552937ba8b5022b6f787885e5ba4955d.png" width="576" height="348"> 
-pf_open_image_edit.png
+<img src="pf_open_image_edit.png" width="576" height="348"> 
 
 ## Layer masks: theory (a bit) and practice (a lot)
 
@@ -173,13 +169,11 @@ For the moment, the new layer completely replaces the background image. This is 
 
 To access the mask associated to the "enfuse" layer, double-click on the small gradient icon next to the name of the layer itself. This will open a new tab with an initially empty stack, where we can start adding layers to generate the desired mask.
 
-<img src="/uploads/default/original/1X/f51b9344fe539b9895b9e9ffa00d386587807de6.png" width="690" height="417"> 
-pf_enfuse_before_blend_edit.png
+<img src="pf_enfuse_before_blend_edit.png" width="690" height="417"> 
 
 In PhotoFlow, masks are edited the same way as the rest of the image: through a stack of layers that can be associated to most of the available tools. In this specific case, we are going to use a combination of gradients and curves to create a smooth transition that follows the shape of the edge between the hills and the clouds. The technique is explained in detail in [this screencast](https://www.youtube.com/watch?v=kapppq-PbTk). To avoid the boring and lengthy procedure of creating all the necessary layers, you can download  [this preset file](http://aferrero2707.github.io/PhotoFlow/data/presets/gradient_modulation.pfp) and load it as shown below:
 
-<img src="/uploads/default/original/1X/89db61f9c049c91dac7d03e9a8b5b14f00f93178.png" width="690" height="327"> 
-pf_enfuse_mask_initial.png
+<img src="pf_enfuse_mask_initial.png" width="690" height="327"> 
 
 The mask is initially a simple vertical linear gradient. At the bottom (where the mask is black) the associated layer is completely transparent and therefore hidden, while at the top (where the mask is white) the layer is completely opaque and therefore replaces anything below it. Everywhere in between, the layer has a degree of transparency equal to the shade of gray in the mask.
 
@@ -187,8 +181,7 @@ In order to show the mask, activate the "show active layer" radio button below t
 
 If the rightmost point in the curve is moved to the left, and the leftmost to the right, it is possible to modify the vertical gradient and the reduce the size of the transition between pure black and pure white, as shown below:
 
-<img src="/uploads/default/original/1X/1a51348409d8bedfbe6d3ee9d1695ba085d0cd0e.png" width="690" height="417"> 
-pf_transition_example.png
+<img src="pf_transition_example.png" width="690" height="417"> 
 
 We are getting closer to our goal of revealing the hills from the background layer, by making the corresponding portion of the mask purely black. However, the transition we have obtained so far is straight, while the contour of the hills has a quite complex curvy shape... this is where the second **curves** adjustment, associated to the "modulation" layer, comes into play.
 
@@ -196,22 +189,19 @@ As one can see from the screenshot above, between the bottom gradient and the "t
 
 Double-clicking on the "modulation" layer reveals a tone curve which is initially flat: output values are always 50% independently of the input. Since the output of this "modulation" curve is combined with the bottom gradient in **grain merge** mode, nothing happens for the moment. However, something interesting happens when a new point is added and dragged in the curve: the shape of the mask matches exactly the curve, like in the example below.
 
-<img src="/uploads/default/original/1X/129554243292bd9a31f92ff217ed4b57ed63694a.png" width="690" height="417"> 
-pf_modulation_example.png
+<img src="pf_modulation_example.png" width="690" height="417"> 
 
 ## The sky/hills transition
 The technique introduced above is used here to create a precise and smooth transition between the sky and the hills. As you can see, with a sufficiently large number of points in the modulation curve one can precisely follow the shape of the hills:
 
-<img src="/uploads/default/original/1X/1d80438c888a895410ecd404cc846fa59c327777.png" width="690" height="311"> 
-pf_enfuse_mask.png
+<img src="pf_enfuse_mask.png" width="690" height="311"> 
 
 The result of the blending looks like that (click the image to see the initial +1EV version):
 
-<img src="/uploads/default/original/1X/6c5f2133f045bb407c47217566702c38fd5cbb7b.png" width="690" height="328"> 
-pano_enfuse_blended.png
-<img src="/uploads/default/original/1X/a3c20fbfe940618f76a57f89c7d726b4405baead.png" width="690" height="328"> 
-pano_+1EV.png
-*Caption: enfuse output blended with the +1EV image (click image to see the initial +1EV version)*
+<figure>
+<img src="pano_enfuse_blended.png" data-swap-src="pano_+1EV.png" alt="Final result" width="690" height="328"> 
+<figcaption> Enfuse output blendednwith the +1EV image (click to see the initial +1EV version) 
+</figcaption> </figure>
 
 The sky looks already much denser and saturated in this version, and the clouds have gained in volume and tonal variations. However, the -1EV image looks even better, therefore we are going to take the sky and clouds from it. 
 
@@ -224,39 +214,33 @@ Fortunately we are not obliged to recreate the mask from scratch. PhotoFlow incl
 
 After activating the mask of the "sky" layer, add a new layer inside it and choose the "clone layer" tool (see screenshot below).
 
-<img src="/uploads/default/original/1X/ecd966ed66053d6b4e32a13ea8f2db245a6a1765.png" width="661" height="500"> 
-pf_clone_layer.png
+<img src="pf_clone_layer.png" width="661" height="500"> 
 
 In the tool configuration dialog that will pop-up, one has to choose the desired source layer among those proposed in the list under the label "Layer name". The generic naming scheme of the layers in the list is "[root group name]/root layer name/OMap/[mask group name]/[maks layer name]", where the items inside square brackets are optional. 
 
-<img src="/uploads/default/original/1X/1d030a38af7cca9143e7a1f2da995cc402557aad.png" width="470" height="398"> 
-pf_sky_mask_clone_layer.png
+<img src="pf_sky_mask_clone_layer.png" width="470" height="398"> 
 
 In this specific case, I want to apply a smoother transition curve to the same base gradient already used in the mask of the "enfuse" layer. For that we need to choose "enfuse/OMap/gradient modulation (blended)" in order to clone the output of the "gradient modulation" group **after the *grain merge* blend**, and then add a new **curves** tool above the cloned layer:
 
-<img src="/uploads/default/original/1X/fa068f813e689e4f26224b889876e7b223d2111b.png" width="690" height="296"> 
-pf_sky_mask.png
+<img src="pf_sky_mask.png" width="690" height="296"> 
 
 The result of all the efforts done up to now is shown below; it can be compared with the initial starting point by clicking on the image itself:
 
-<img src="/uploads/default/original/1X/ef30f1c8eda320bbca5aa5f0cd8446e8b3d0f038.png" width="690" height="322"> 
-<img src="/uploads/default/original/1X/a3c20fbfe940618f76a57f89c7d726b4405baead.png" width="690" height="328"> 
-pano_sky_blended.png
-pano_+1EV.png
-Caption: edited image after blending the upper portion of the -1EV version through a layer mask. Click to see the initial +1EV image.
+<figure>
+<img src="pano_sky_blended.png" data-swap-src="pano_+1EV.png" alt="Final result" width="690" height="322"> 
+<figcaption> Edited image after blending the upper portion of the -1EV version through a layer mask. Click to see the initial +1EV image.
+</figcaption> </figure>
 
 We are not quite done yet, as the image is still a bit too dark and flat, however this version will "tolerate" some contrast and luminance boost much better than a single exposure. In this case I've added a **curves** adjustment at the top of the layer's stack, and I've drawn an S-shaped RGB tone curve as shown below:
 
-<img src="/uploads/default/original/1X/c1caee94f739a0fdf6c1341031d7b324400003e4.png" width="348" height="500"> 
-pf_tone_curve_edit.png
+<img src="pf_tone_curve_edit.png" width="348" height="500"> 
 
 The effect of this tone curve is to increase the overall brightness of the image (the middle point is moved to the left) and to compress the shadows and highlights without modifying the black and white points (i.e. the extremes of the curve). This curve definitely gives "pop" to the image (click to see the version before the tone adjustment):
 
-<img src="/uploads/default/original/1X/a9f421cba5b9fd10cbfce0a974e487f8490fc2c6.png" width="690" height="322"> 
-<img src="/uploads/default/original/1X/ef30f1c8eda320bbca5aa5f0cd8446e8b3d0f038.png" width="690" height="322"> 
-pano_contrast.png
-pano_sky_blended.png
-Caption: result of the S-shaped tonal adjustment (click the image to see the version before the adjustment)
+<figure>
+<img src="pano_contrast.png" data-swap-src="pano_sky_blended.png" alt="Final result" width="690" height="322"> 
+<figcaption> Result of the S-shaped tonal adjustment (click the image to see the version before the adjustment).
+</figcaption> </figure>
 
 However, this comes at the expense of an overall increase in the color saturation, which is a typical side effect of RGB curves. While this saturation boost looks quite nice in the hills, the effect is rather disastrous in the sky. The blue as turned electric, and is far from what a nice, saturated blue sky should look like!
 
