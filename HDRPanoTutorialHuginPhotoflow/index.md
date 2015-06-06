@@ -19,10 +19,8 @@ The final result of the post-processing is anticipated below (click to compare w
 
 <figure>
 <img src="pano_final.png" data-swap-src="pano_+1EV.png" alt="Final result" width="690" height="322"> 
-<figcaption>
-Final result of the panorama editing (click to compare to simple +1EV exposure)
-<\figcaption>
-<\figure>
+<figcaption> Final result of the panorama editing (click to compare to simple +1EV exposure) 
+</figcaption> </figure>
 
 In this case I have used the brightest image for the foreground, the darkest one for the sky and clouds, and and exposure-fused one for a seamless transition between the two.
 
