@@ -13,21 +13,17 @@ author-img: ''
 layout: article
 ---
 
-*Very often, photo editing is all about getting **what your eyes have seen** out of **what your camera has captured**.* 
+The goal of this tutorial is to show how to create a sort-of-HDR panoramic image using only Free and Open Source tools. To explain my workflow I will use the image below as an example. 
+This panorama was obtained from the combination of six views, each consisting of three bracketed shots at -1EV, 0EV and +1EV exposure. The three exposures are stitched together with the [Hugin](http://hugin.sourceforge.net/) suite, and then exposure-blended with [enfuse](). The [PhotoFlow RAW editor](https://github.com/aferrero2707/PhotoFlow) is used to prepare the initial images and to finalize the processing of the assembled panorama.
+The final result of the post-processing is anticipated below (click to compare with the simple +1EV exposure).
 
-This image is no exception: the human vision system can "compensate" large luminosity variations and can "record" scenes with a wider dynamic range than your camera sensor. In the following I will attempt to restore such large dynamics by combining under- and over-exposed shots together, in a way that does not produce unpleasing halos or artifacts. Nevertheless, I have intentionally pushed the edit a bit "over the top" in order to better show how far one can go with such a technique. The final result of the post-processing is anticipated below (click to compare with the simple +1EV exposure).
+<figure>
+<img src="pano_final.png" data-swap-src="pano_+1EV.png" alt="Final result" width="690" height="322"> 
+<figcaption>
+Final result of the panorama editing (click to compare to simple +1EV exposure)
+<\figcaption>
+<\figure>
 
-<img src="/uploads/default/original/1X/a4bbb4dcf11f329143b0ee469435bcb7f70ddac5.png" width="690" height="322"> 
-<img src="/uploads/default/original/1X/a3c20fbfe940618f76a57f89c7d726b4405baead.png" width="690" height="328"> 
-pano_final.png
-pano_+1EV.png
-*Caption: final result of the panorama editing (click to compare to simple +1EV exposure)*
-
-Through this tutorial I will use the [Hugin](http://hugin.sourceforge.net/) suite for aligning and stitching the shots, and the [PhotoFlow RAW editor](https://github.com/aferrero2707/PhotoFlow) to prepare the initial images and to finalize the processing of the assembled panorama.
-
-<img src="/uploads/default/145/62a03e24e825a19f.png" width="690" height="322"> 
-
-To explain my workflow I will use the image above as an example. It is assembled from six sets of images, each set consisting of three bracketed shots to record the full dynamic range of the scene. The three exposures are assembled separately, and then blended together in the final post-processing.
 In this case I have used the brightest image for the foreground, the darkest one for the sky and clouds, and and exposure-fused one for a seamless transition between the two.
 
 The rest of the post will show how to get there...
@@ -53,9 +49,11 @@ Loading and processing a RAW file is rather easy:
 1. click the "Open" button and choose the appropriate RAW file from your hard disk; the image preview area will show at this point a grey and rather dark image
 2. add a "RAW developer" layer; a configuration dialog will show up which allows to access and modify all the typical RAW processing parameters (white balance, exposure, color conversion, etc... see screenshots below).
 
-<img src="/uploads/default/136/630af83d91f41735.png" width="384" height="412"> <img src="/uploads/default/137/428b13fe967a0db0.png" width="383" height="246"> 
+<img src="pf_raw_wb.png" width="384" height="412" style="float:left; margin-right:5px;" > 
+<img src="pf_raw_exposure.png" width="383" height="246" style="float:left; margin-right:5px;" > 
 
-<img src="/uploads/default/138/0dd071d18e1872fb.png" width="384" height="246"> <img src="/uploads/default/139/3176ba7b18868939.png" width="383" height="247"> 
+<img src="pf_raw_demo.png" width="384" height="246" style="float:left; margin-right:5px;"> 
+<img src="pf_raw_output.png" width="383" height="247" style="float:left; margin-right:5px;"> 
 
 More details on the RAW processing in PhotoFlow can be found in [this tutorial](http://photoflowblog.blogspot.fr/2014/09/tutorial-how-to-process-raw-image-in.html).
 
@@ -88,7 +86,7 @@ If you are running Hugin for the first time, I suggest to switch the interface t
 
 The first steps have to be done in the *Photos* tab:
 
-<img src="/uploads/default/140/60ce61b66f5b7251.png" width="667" height="500"> 
+<img src="hugin_1.png" width="667" height="500"> 
 
 1. Click on *Add images* and load all the tiff files included in your panorama. Hugin should automatically determine the lens focal length and the exposure values from the EXIF data embedded in the tiff files. 
 2. Click on *Create control points* to let hugin determine the anchor points that will be used to align the images and to determine the lens correction parameters so that all shots overlap perfectly. If the scene contains a large amount of clouds that have likely moved during the shooting, you can try setting the feature matching algorithm to *cpfind+celeste* to automatically exclude non-reliable control points in the clouds.
@@ -97,17 +95,17 @@ The first steps have to be done in the *Photos* tab:
 
 At this point we can have a first look at the assembled panorama. Hugin provides an OpenGL-based previewer that can be opened by clicking on the on the *GL* icon in the top toolbar (marked with the arrow in the above screenshot). This will open a window like this:
 
-<img src="/uploads/default/141/de380d7c86ab9eb9.png" width="689" height="417"> 
+<img src="hugin_2.png" width="689" height="417"> 
 
 If the shots have been taken handheld and are not perfectly aligned, the panorama will probably look a bit "wavy" like in my example. This can be easily fixed by clicking on the *Straighten* button (at the top of the *Move/Drag* tab). Next, the image can be centered in the preview area with the *Center* and *Fit* buttons.
 
 If the horizon is still not straight, you can further correct it by dragging the center of the image up or down:
 
-<img src="/uploads/default/142/4da68208de9f4bdc.png" width="690" height="417"> 
+<img src="hugin_3.png" width="690" height="417"> 
 
 At this point, one can switch to the *Projection* tab and play with the different options. I usually find the *Cylindrical* projection better than the *Equirectangular* that is proposed by default (the vertical dimension is less "compressed"). For architectural panoramas that are not too wide, the *Rectilinear* projection can be a good option since vertical lines are kept straight.
 
-<img src="/uploads/default/144/8e5a3191572672f9.png" width="690" height="398"> 
+<img src="hugin_4.png" width="690" height="398"> 
 
 If the projection type is changed, one has to click once more on the *Center* and *Fit* buttons.
 
@@ -124,6 +122,10 @@ The final act starts by clicking on the *Stitch!* button. The input images will 
 At the end of the processing, few new images should appear in the output directory: one with an "_blended_fused.tif" suffix containing the output of the final enfuse step, and few with an "_exposure_????.tif" suffix that contain intermediate panoramas for each exposure value.
 
 #Manual exposure blending with PhotoFlow
+*Very often, photo editing is all about getting **what your eyes have seen** out of **what your camera has captured**.* 
+
+The image that will be edited through this tutorial is no exception: the human vision system can "compensate" large luminosity variations and can "record" scenes with a wider dynamic range than your camera sensor. In the following I will attempt to restore such large dynamics by combining under- and over-exposed shots together, in a way that does not produce unpleasing halos or artifacts. Nevertheless, I have intentionally pushed the edit a bit "over the top" in order to better show how far one can go with such a technique. 
+
 This second part introduces a certain number of quite general editing ideas, mixed with details specific to their realization in PhotoFlow. Most of what is described here can be reproduced in GIMP with little extra effort, but without the ease of non-destructive editing.
 
 The steps that I followed to go from one to the other can be more or less outlined like that:
