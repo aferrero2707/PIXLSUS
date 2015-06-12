@@ -1,10 +1,10 @@
 ---
 date: 2015-04-24T10:05:29-05:00
-title: Creating HDR panoramas with Hugin and PhotoFlow
-sub-title: A pithy sub-title
+title: A FL/OSS panorama
+sub-title: Creating panoramas with Hugin and PhotoFlow
 
 lede-img: 'pano_heading.jpg'
-lede-attribution: "<a href='http://blog.patdavid.net'>Pat David</a>"
+lede-attribution: "<a href='http://photoflowblog.blogspot.fr'>Andrea Ferrero</a>"
 
 author: "Andrea Ferrero"
 author-bio: "Husband, father, scientist and spare-time photographer"
@@ -274,7 +274,11 @@ Here I will assume you are quite familiar wit the Lab colorspace. Otherwise, [he
 
 Looking at the image, one can already guess that most of the areas in the hills have a yellow component, and will therefore be positive in the **b** channel, while the sky and clouds are neutral or strongly blue, and therefore have **b** values that are negative or close to zero. The grass is obviously green and therefore **negative** in the **a** channel, while the wineyards are brownish and therefore most likely with positive **a** values. In PhotoFlow the **a** and **b** values are re-mapped to a range between 0 and 100%, so that for example **a=0** corresponds to 50%. You will see that this is very convenient for channel blending.
 
-My goal is to lighten the green and the yellow tones, to create a better contrast around the wineyards and add some "volume" to the grass and trees. Let's first of all inspect the **a** channel: a copy of it is shown below, with the contrast enhanced to better see the tonal variations (click to see the original versions):
+My goal is to lighten the green and the yellow tones, to create a better contrast around the wineyards and add some "volume" to the grass and trees. Let's first of all inspect the **a** channel: for that, we'll need to add a group layer on top of everything (I've called it "ab overlay") and then added a **clone** layer inside this group. The source of the clone layer is set to the **a** channel of the "backgroud" layer, as shown in this screenshot:
+
+<img src="pf_a_channel_clone.png" alt="a channel clone" width="470" height="263"> 
+
+A copy of the **a** channel is shown below, with the contrast enhanced to better see the tonal variations (click to see the original versions):
 
 <figure>
 <img src="pano_a_contrast.png" data-swap-src="pano_a_channel.png" alt="Saturation boost after mask" width="690" height="322"> 
@@ -288,5 +292,37 @@ As we have already seen, in the **a** channel the grass is negative and therefor
 <figcaption> 
 </figcaption> </figure>
 
-Let's now consider the **b** channel: as sursprising as it might seem, the grass is actually more yellow than green, or at least the **b** channel values in the grass are higher than the inverted **a** values. However, the blue sky is very dark in the **b** channel, while the goal is to leave the sky almost unchanged. The solution is to blend the **b** channel into the **a** channel in **Lighten** mode, so that only the **b** pixels that are lighter than the corresponding **a** ones end up in the blended image.
+Let's now consider the **b** channel: as sursprising as it might seem, the grass is actually more yellow than green, or at least the **b** channel values in the grass are higher than the inverted **a** values. In addition, the trees at the top of the hill stick nicely out of the clouds, much more than in the **a** channel. All in all, a combination of the two Lab channels seems to be the best for what we want to achieve.
+
+With one exception: the blue sky is very dark in the **b** channel, while the goal is to leave the sky almost unchanged. The solution is to blend the **b** channel into the **a** channel in **Lighten** mode, so that only the **b** pixels that are lighter than the corresponding **a** ones end up in the blended image. The result is shown below (click on the image to see the **b** channel).
+
+<figure>
+<img src="pano_b_lighten_contrast.png" data-swap-src="pano_b_contrast.png" alt="b channel lighten blend" width="690" height="322"> 
+<figcaption> **b** channel blended in **Lighten** mode (click the image to see the **b** channel itself).
+</figcaption> </figure>
+
+And this are the blended **a** and **b** channels with the original contrast:
+
+<img src="pano_b_lighten.png" alt="b channel lighten blend" width="690" height="322"> 
+
+The last act is to change the blending mode of the "ab overlay" group to **Overlay**: the grass and trees get some nice "pop", while the sky remains basically unchanged:
+
+<figure>
+<img src="pano_ab_overlay.png" data-swap-src="pano_saturation_masked.png" alt="ab overlay" width="690" height="322"> 
+<figcaption> Lab channels overlay (click to see the image after the saturation adjustment).
+</figcaption> </figure>
+
+I'm now almost satisfied with the result, except for one thing: the Lab overlay makes the yellow area on the left of the image way too bright. The solution is a gradient mask (horizontal this time) associated to the "ab overlay group", to exclude the left part of the image as shown below:
+
+<img src="pano_ab_overlay_mask.png" alt="overlay blend mask" width="690" height="353">
+
+The final, masked image is shown here, to be compared with the initial starting point:
+
+<figure>
+<img src="pano_ab_overlay_masked.png" data-swap-src="pano_+1EV.png" alt="final result" width="690" height="322"> 
+<figcaption> The final image after the masked Lab overlay blend (click to see the initial +1EV version).
+</figcaption> </figure>
+
+The final effect is probably a bit too pronounced, but I'll intentionally leave it like that to better see what kind of result can be achieved with this powerful blending technique. For the final print, I will most likely further fine-tune the result by adjusting the overall opacity of the "ab overlay" group layer, until I'm fully satisfied...
+
 #Conclusion
