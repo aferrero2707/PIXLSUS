@@ -243,7 +243,20 @@ The effect of this tone curve is to increase the overall brightness of the image
 </figcaption> </figure>
 
 However, this comes at the expense of an overall increase in the color saturation, which is a typical side effect of RGB curves. While this saturation boost looks quite nice in the hills, the effect is rather disastrous in the sky. The blue as turned electric, and is far from what a nice, saturated blue sky should look like!
+However, there is a imple fix to this problem: change the blend mode of the **curves** layer from **Normal** to **Luminosity**. The tone curve in this case only modified the luminosity of the image, but preserves as much as possible the original colors. The difference between normal and lumnosity blending is shown below (click to see the **Normal** blending). As one can see, the **Luminosity** blend tends to produce a duller image, therefore we will need to fix the overall saturation in the next step.
 
-We are going to fix the colors and add a bit more "pop" to the foreground in the third, and last part of the tutorial...
+<figure>
+<img src="pano_contrast_lumi.png" data-swap-src="pano_contrast.png" alt="Luminosity blend" width="690" height="322"> 
+<figcaption> S-shaped tonal adjustment with **Luminosity** blend mode (click the image to see the version with **Normal** blend mode).
+</figcaption> </figure>
+
+To adjust the overall saturation of the image, let's now add an **Hue/Saturation** layer above the tone curve and set the saturation value to **+50**. The result is show below (click to see the **Luminosity** blend output).
+
+<figure>
+<img src="pano_saturation.png" data-swap-src="pano_contrast_lumi.png" alt="Saturation boost" width="690" height="322"> 
+<figcaption> Saturation set to **+50** (click the image to see the **Luminosity** blend output).
+</figcaption> </figure>
+
+This definitely looks better on the hills, however the sky is again "too blue".
 
 #Conclusion
