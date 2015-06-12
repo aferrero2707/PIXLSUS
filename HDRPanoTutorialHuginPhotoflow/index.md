@@ -272,8 +272,21 @@ In the bottom part the mask is perfectly white, and therefore a **+50** saturati
 The image is already quite ok, but I still would like to add some more tonal variations in the hills. This could be done with lots of different techniques, but in this case I will use one that is very simple and straightforward, and that does not require any complex curve or mask since it uses the image data itself. The basic idea is to take the **a** and/or **b** channels of the [**Lab**](https://en.wikipedia.org/wiki/Lab_color_space) colorspace, and combine them with the image itself in **Overlay** blend mode. This will introduce **tonal** variations depending on the **color** of the pixels (since the **a** and **b** channels only encode the color information).
 Here I will assume you are quite familiar wit the Lab colorspace. Otherwise, [here](https://en.wikipedia.org/wiki/Lab_color_space) is the link to the Wikipedia page that should give you enough informations to follow the rest of the tutorial.
 
-Looking at the image, one can already guess that most of the areas in the hills have a yellow component, and will therefore be positive in the **b** channel, while the sky and clouds are neutral or strongly blue, and therefore have **b** values that are negative or close to zero. The grass is obviously green and therefore **negative** in the **a** channel, while the wineyards are brownish and therefore most likely with positive **a** values.
+Looking at the image, one can already guess that most of the areas in the hills have a yellow component, and will therefore be positive in the **b** channel, while the sky and clouds are neutral or strongly blue, and therefore have **b** values that are negative or close to zero. The grass is obviously green and therefore **negative** in the **a** channel, while the wineyards are brownish and therefore most likely with positive **a** values. In PhotoFlow the **a** and **b** values are re-mapped to a range between 0 and 100%, so that for example **a=0** corresponds to 50%. You will see that this is very convenient for channel blending.
 
-My goal is to lighten the grass and the yellow colors, to create a better separation from the wineyards and add some "volume" to the grass and trees.
+My goal is to lighten the green and the yellow tones, to create a better contrast around the wineyards and add some "volume" to the grass and trees. Let's first of all inspect the **a** channel: a copy of it is shown below, with the contrast enhanced to better see the tonal variations (click to see the original versions):
 
+<figure>
+<img src="pano_a_contrast.png" data-swap-src="pano_a_channel.png" alt="Saturation boost after mask" width="690" height="322"> 
+<figcaption> 
+</figcaption> </figure>
+
+As we have already seen, in the **a** channel the grass is negative and therefore looks dark in the image above. If we want to lighten the grass we therefore need to invert it, to obtain this:
+
+<figure>
+<img src="pano_a_invert_contrast.png" alt="Saturation boost after mask" width="690" height="322"> 
+<figcaption> 
+</figcaption> </figure>
+
+Let's now consider the **b** channel: as sursprising as it might seem, the grass is actually more yellow than green, or at least the **b** channel values in the grass are higher than the inverted **a** values. However, the blue sky is very dark in the **b** channel, while the goal is to leave the sky almost unchanged. The solution is to blend the **b** channel into the **a** channel in **Lighten** mode, so that only the **b** pixels that are lighter than the corresponding **a** ones end up in the blended image.
 #Conclusion
