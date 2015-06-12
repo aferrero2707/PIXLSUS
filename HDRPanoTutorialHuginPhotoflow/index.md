@@ -205,6 +205,7 @@ The result of the blending looks like that (click the image to see the initial +
 
 The sky looks already much denser and saturated in this version, and the clouds have gained in volume and tonal variations. However, the -1EV image looks even better, therefore we are going to take the sky and clouds from it. 
 
+<a name="sky_blend"></a>
 To include the -1EV image we are going to follow the same procedure done already in the case of the enfuse output:
 
 1. add a new layer of type "Open image" and load the -1EV Hugin output (I've named this new layer "sky")
@@ -257,7 +258,7 @@ To adjust the overall saturation of the image, let's now add an **Hue/Saturation
 <figcaption> Saturation set to **+50** (click the image to see the **Luminosity** blend output).
 </figcaption> </figure>
 
-This definitely looks better on the hills, however the sky is again "too blue". The solution is to decrease the saturation of the top part through an opacity mask. In this case I have followed the same steps as for the mask of the [sky blend](), but I've changed the transition curve to the one shown here:
+This definitely looks better on the hills, however the sky is again "too blue". The solution is to decrease the saturation of the top part through an opacity mask. In this case I have followed the same steps as for the mask of the [sky blend](sky_blend), but I've changed the transition curve to the one shown here:
 
 <img src="pano_saturation_mask.png" alt="Saturation mask" width="690" height="351">
 
