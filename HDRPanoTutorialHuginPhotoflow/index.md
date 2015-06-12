@@ -268,7 +268,12 @@ In the bottom part the mask is perfectly white, and therefore a **+50** saturati
 <figcaption> Saturation set to **+50** through a transition mask (click the image to see the **Luminosity** blend output).
 </figcaption> </figure>
 
+##Lab blending
+The image is already quite ok, but I still would like to add some more tonal variations in the hills. This could be done with lots of different techniques, but in this case I will use one that is very simple and straightforward, and that does not require any complex curve or mask since it uses the image data itself. The basic idea is to take the **a** and/or **b** channels of the [**Lab**](https://en.wikipedia.org/wiki/Lab_color_space) colorspace, and combine them with the image itself in **Overlay** blend mode. This will introduce **tonal** variations depending on the **color** of the pixels (since the **a** and **b** channels only encode the color information).
+Here I will assume you are quite familiar wit the Lab colorspace. Otherwise, [here](https://en.wikipedia.org/wiki/Lab_color_space) is the link to the Wikipedia page that should give you enough informations to follow the rest of the tutorial.
 
+Looking at the image, one can already guess that most of the areas in the hills have a yellow component, and will therefore be positive in the **b** channel, while the sky and clouds are neutral or strongly blue, and therefore have **b** values that are negative or close to zero. The grass is obviously green and therefore **negative** in the **a** channel, while the wineyards are brownish and therefore most likely with positive **a** values.
 
+My goal is to lighten the grass and the yellow colors, to create a better separation from the wineyards and add some "volume" to the grass and trees.
 
 #Conclusion
