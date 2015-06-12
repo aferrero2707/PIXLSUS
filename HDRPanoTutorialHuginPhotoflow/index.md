@@ -258,7 +258,7 @@ To adjust the overall saturation of the image, let's now add an **Hue/Saturation
 <figcaption> Saturation set to **+50** (click the image to see the **Luminosity** blend output).
 </figcaption> </figure>
 
-This definitely looks better on the hills, however the sky is again "too blue". The solution is to decrease the saturation of the top part through an opacity mask. In this case I have followed the same steps as for the mask of the [sky blend](sky_blend), but I've changed the transition curve to the one shown here:
+This definitely looks better on the hills, however the sky is again "too blue". The solution is to decrease the saturation of the top part through an opacity mask. In this case I have followed the same steps as for the mask of the [sky blend](#sky_blend), but I've changed the transition curve to the one shown here:
 
 <img src="pano_saturation_mask.png" alt="Saturation mask" width="690" height="351">
 
