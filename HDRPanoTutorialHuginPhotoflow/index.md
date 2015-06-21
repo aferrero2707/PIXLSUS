@@ -327,11 +327,11 @@ The final, masked image is shown here, to be compared with the initial starting 
 # The Final Touch
 Through the tutorial I have intentionally pushed the editing quite above what I would personally find acceptable. The idea was to show how far one can go with the techniques I have described, and now I will show how non-destructive editing allows to go back along your steps and reduce the strength of the various effects until the result looks really ok.
 
-In this specific case, the **saturation** boost and the **Lab overlay** were quite too strong, so I have lowered the opacity of the **"saturation"** layer to **x%** and the one of the **"ab overlay"** group to **x%**. Then, feeling that the **"b channel"** blend was still brightening the yellow areas too much, I have reduced the opacity of the **"b channel"" layer to **x%**.
+In this specific case, the **contrast**, **saturation** boost and the **Lab overlay** were quite too strong, so I have lowered the opacity of the **"contrast"** layer to **90%**, the one of the **"saturation"** layer to **80%** and the one of the **"ab overlay"** group to **40%**. Then, feeling that the **"b channel"** blend was still brightening the yellow areas too much, I have reduced the opacity of the **"b channel"** layer to **70%**.
 
 screenshot
 
-Another thing tat was still annoying me in the image was the overall color balance: the grass in the foreground looks a bit too **"emerald"** instead of **"yellowish green"**, therefore I thought that the image could profit of a general warming up of the colors. For that I have added a curves layer at the top of the editing stack, and brought down the middle of the curve in both the **green** and **blue** channels. The move needs to be quite subtle: the middle point went down from **50%** to **x%** in the greens and **x%** in the blues, and then I further reduced the opacity of the adjustment to **x%**. Here comes the warmed-up version, compared with the image before:
+Another thing that was still finding annoying in the image was the overall color balance: the grass in the foreground looked a bit too **"emerald"** instead of **"yellowish green"**, therefore I thought that the image could profit of a general warming up of the colors. For that I have added a curves layer at the top of the editing stack, and brought down the middle of the curve in both the **green** and **blue** channels. The move needs to be quite subtle: the middle point went down from **50%** to **x%** in the greens and **x%** in the blues, and then I further reduced the opacity of the adjustment to **x%**. Here comes the warmed-up version, compared with the image before:
 
 screenshot
 
