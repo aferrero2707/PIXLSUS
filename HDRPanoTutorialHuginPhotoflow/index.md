@@ -324,6 +324,22 @@ The final, masked image is shown here, to be compared with the initial starting 
 <figcaption> The final image after the masked Lab overlay blend (click to see the initial +1EV version).
 </figcaption> </figure>
 
-The final effect is probably a bit too pronounced, but I'll intentionally leave it like that to better see what kind of result can be achieved with this powerful blending technique. For the final print, I will most likely further fine-tune the result by adjusting the overall opacity of the "ab overlay" group layer, until I'm fully satisfied...
+# The Final Touch
+Through the tutorial I have intentionally pushed the editing quite above what I would personally find acceptable. The idea was to show how far one can go with the techniques I have described, and now I will show how non-destructive editing allows to go back along your steps and reduce the strength of the various effects until the result looks really ok.
 
-#Conclusion
+In this specific case, the **saturation** boost and the **Lab overlay** were quite too strong, so I have lowered the opacity of the **"saturation"** layer to **x%** and the one of the **"ab overlay"** group to **x%**. Then, feeling that the **"b channel"** blend was still brightening the yellow areas too much, I have reduced the opacity of the **"b channel"" layer to **x%**.
+
+screenshot
+
+Another thing tat was still annoying me in the image was the overall color balance: the grass in the foreground looks a bit too **"emerald"** instead of **"yellowish green"**, therefore I thought that the image could profit of a general warming up of the colors. For that I have added a curves layer at the top of the editing stack, and brought down the middle of the curve in both the **green** and **blue** channels. The move needs to be quite subtle: the middle point went down from **50%** to **x%** in the greens and **x%** in the blues, and then I further reduced the opacity of the adjustment to **x%**. Here comes the warmed-up version, compared with the image before:
+
+screenshot
+
+At this point I'm almost satisfied. However, I still find that the green stuff at the bottom-right of the image attracts too much my attention and distracts the eye. Therefore I darkened the bottom of the image with a slightly curved gradient applied in **"overlay"** blend mode. The gradient is created with the same technique used for blending the various exposures. The transition curve is shown below: in this case, the top part is seto to **50% gray** (remember that we blend the gradient in **"overlay"** mode) and the bottom part is moved a bit below 50% to obtain a slightly darkening effect. 
+
+**It's done!** If you managed to follow me 'till the end, you are now rewarded with the final image in all its glory, that you can again compare with the initial starting point.
+
+final image
+
+It has been a quite long journey to arrive here... and I hope not to have lost too many followers on the way!
+
