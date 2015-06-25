@@ -3,7 +3,7 @@ date: 2015-04-24T10:05:29-05:00
 title: A FL/OSS panorama
 sub-title: Creating panoramas with Hugin and PhotoFlow
 
-lede-img: 'pano_heading.jpg'
+lede-img: 'pano_lede.png'
 lede-attribution: "<a href='http://photoflowblog.blogspot.fr'>Andrea Ferrero</a>"
 
 author: "Andrea Ferrero"
@@ -344,14 +344,14 @@ Another thing I still did not like in the image was the overall color balance: t
 At this point I was almost satisfied. However, I still found that the green stuff at the bottom-right of the image attracted too much my attention and distracted the eye. Therefore I darkened the bottom of the image with a slightly curved gradient applied in **"soft light"** blend mode. The gradient was created with the same technique used for blending the various exposures. The transition curve is shown below: in this case, the top part was set to **50% gray** (remember that we blend the gradient in **"soft light"** mode) and the bottom part was moved a bit below 50% to obtain a slightly darkening effect:
 
 <figure>
-<img src="pf_vignetting.png" alt="vignetting gradient" width="690" height="322"> 
+<img src="pf_vignetting.png" alt="vignetting gradient" width="690" height="298"> 
 <figcaption> Gradient used for darkening the bottom of the image.
 </figcaption> </figure>
 
 **It's done!** If you managed to follow me 'till the end, you are now rewarded with the final image in all its glory, that you can again compare with the initial starting point.
 
 <figure>
-<img src="pano_vignetting.png" data-swap-src="pano_+1EV.png" alt="final result" width="690" height="322"> 
+<img src="pano_final2.png" data-swap-src="pano_+1EV.png" alt="final result" width="690" height="328"> 
 <figcaption> The final image (click to see the initial +1EV version).
 </figcaption> </figure>
 
