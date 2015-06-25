@@ -334,14 +334,19 @@ In this specific case, I have lowered the opacity of the **"contrast"** layer to
 <figcaption> Opacities adjusted for a "softer" edit.
 </figcaption> </figure>
 
-Another thing I still did not like in the image was the overall color balance: the grass in the foreground looked a bit too **"emerald"** instead of **"yellowish green"**, therefore I thought that the image could profit of a general warming up of the colors. For that I have added a curves layer at the top of the editing stack, and brought down the middle of the curve in both the **green** and **blue** channels. The move needs to be quite subtle: the middle point went down from **50%** to **x%** in the greens and **x%** in the blues, and then I further reduced the opacity of the adjustment to **x%**. Here comes the warmed-up version, compared with the image before:
+Another thing I still did not like in the image was the overall color balance: the grass in the foreground looked a bit too **"emerald"** instead of **"yellowish green"**, therefore I thought that the image could profit of a general warming up of the colors. For that I have added a curves layer at the top of the editing stack, and brought down the middle of the curve in both the **green** and **blue** channels. The move needs to be quite subtle: I brought the middle point down from **50%** to **47%** in the greens and **45%** in the blues, and then I further reduced the opacity of the adjustment to **50%**. Here comes the warmed-up version, compared with the image before:
 
 <figure>
 <img src="pano_warmer.png" data-swap-src="pano_adjusted_opacity.png" alt="opacity adjustment" width="690" height="322"> 
 <figcaption> Opacities adjusted for a "softer" edit.
 </figcaption> </figure>
 
-At this point I'm almost satisfied. However, I still find that the green stuff at the bottom-right of the image attracts too much my attention and distracts the eye. Therefore I darkened the bottom of the image with a slightly curved gradient applied in **"overlay"** blend mode. The gradient is created with the same technique used for blending the various exposures. The transition curve is shown below: in this case, the top part is seto to **50% gray** (remember that we blend the gradient in **"overlay"** mode) and the bottom part is moved a bit below 50% to obtain a slightly darkening effect. 
+At this point I was almost satisfied. However, I still found that the green stuff at the bottom-right of the image attracted too much my attention and distracted the eye. Therefore I darkened the bottom of the image with a slightly curved gradient applied in **"soft light"** blend mode. The gradient was created with the same technique used for blending the various exposures. The transition curve is shown below: in this case, the top part was set to **50% gray** (remember that we blend the gradient in **"soft light"** mode) and the bottom part was moved a bit below 50% to obtain a slightly darkening effect:
+
+<figure>
+<img src="pf_vignetting.png" alt="vignetting gradient" width="690" height="322"> 
+<figcaption> Gradient used for darkening the bottom of the image.
+</figcaption> </figure>
 
 **It's done!** If you managed to follow me 'till the end, you are now rewarded with the final image in all its glory, that you can again compare with the initial starting point.
 
