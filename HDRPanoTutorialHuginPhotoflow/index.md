@@ -321,25 +321,34 @@ The final, masked image is shown here, to be compared with the initial starting 
 
 <figure>
 <img src="pano_ab_overlay_masked.png" data-swap-src="pano_+1EV.png" alt="final result" width="690" height="322"> 
-<figcaption> The final image after the masked Lab overlay blend (click to see the initial +1EV version).
+<figcaption> The image after the masked Lab overlay blend (click to see the initial +1EV version).
 </figcaption> </figure>
 
 # The Final Touch
-Through the tutorial I have intentionally pushed the editing quite above what I would personally find acceptable. The idea was to show how far one can go with the techniques I have described, and now I will show how non-destructive editing allows to go back along your steps and reduce the strength of the various effects until the result looks really ok.
+Through the tutorial I have intentionally pushed the editing quite above what I would personally find acceptable. The idea was to show how far one can go with the techniques I have described; fortunatey, the non-destructive editing allows to go back on our steps and reduce the strength of the various effects until the result looks really ok.
 
-In this specific case, the **contrast**, **saturation** boost and the **Lab overlay** were quite too strong, so I have lowered the opacity of the **"contrast"** layer to **90%**, the one of the **"saturation"** layer to **80%** and the one of the **"ab overlay"** group to **40%**. Then, feeling that the **"b channel"** blend was still brightening the yellow areas too much, I have reduced the opacity of the **"b channel"** layer to **70%**.
+In this specific case, I have lowered the opacity of the **"contrast"** layer to **90%**, the one of the **"saturation"** layer to **80%** and the one of the **"ab overlay"** group to **40%**. Then, feeling that the **"b channel"** blend was still brightening the yellow areas too much, I have reduced the opacity of the **"b channel"** layer to **70%**.
 
-screenshot
+<figure>
+<img src="pano_adjusted_opacity.png" alt="opacity adjustment" width="690" height="322"> 
+<figcaption> Opacities adjusted for a "softer" edit.
+</figcaption> </figure>
 
-Another thing that was still finding annoying in the image was the overall color balance: the grass in the foreground looked a bit too **"emerald"** instead of **"yellowish green"**, therefore I thought that the image could profit of a general warming up of the colors. For that I have added a curves layer at the top of the editing stack, and brought down the middle of the curve in both the **green** and **blue** channels. The move needs to be quite subtle: the middle point went down from **50%** to **x%** in the greens and **x%** in the blues, and then I further reduced the opacity of the adjustment to **x%**. Here comes the warmed-up version, compared with the image before:
+Another thing I still did not like in the image was the overall color balance: the grass in the foreground looked a bit too **"emerald"** instead of **"yellowish green"**, therefore I thought that the image could profit of a general warming up of the colors. For that I have added a curves layer at the top of the editing stack, and brought down the middle of the curve in both the **green** and **blue** channels. The move needs to be quite subtle: the middle point went down from **50%** to **x%** in the greens and **x%** in the blues, and then I further reduced the opacity of the adjustment to **x%**. Here comes the warmed-up version, compared with the image before:
 
-screenshot
+<figure>
+<img src="pano_warmer.png" data-swap-src="pano_adjusted_opacity.png" alt="opacity adjustment" width="690" height="322"> 
+<figcaption> Opacities adjusted for a "softer" edit.
+</figcaption> </figure>
 
 At this point I'm almost satisfied. However, I still find that the green stuff at the bottom-right of the image attracts too much my attention and distracts the eye. Therefore I darkened the bottom of the image with a slightly curved gradient applied in **"overlay"** blend mode. The gradient is created with the same technique used for blending the various exposures. The transition curve is shown below: in this case, the top part is seto to **50% gray** (remember that we blend the gradient in **"overlay"** mode) and the bottom part is moved a bit below 50% to obtain a slightly darkening effect. 
 
 **It's done!** If you managed to follow me 'till the end, you are now rewarded with the final image in all its glory, that you can again compare with the initial starting point.
 
-final image
+<figure>
+<img src="pano_vignetting.png" data-swap-src="pano_+1EV.png" alt="final result" width="690" height="322"> 
+<figcaption> The final image (click to see the initial +1EV version).
+</figcaption> </figure>
 
 It has been a quite long journey to arrive here... and I hope not to have lost too many followers on the way!
 
