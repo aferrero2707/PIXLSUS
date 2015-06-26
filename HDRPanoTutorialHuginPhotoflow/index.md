@@ -1,5 +1,5 @@
 ---
-date: 2015-04-24T10:05:29-05:00
+date: 2015-06-26T11:31:39-0:500 
 title: A Blended Panorama with PhotoFlow
 sub-title: Creating panoramas with Hugin and PhotoFlow
 
@@ -11,6 +11,17 @@ author-bio: "Husband, father, scientist and spare-time photographer"
 author-img: ''
 
 layout: article
+
+type: 'article'
+collection: tutorial
+tags:
+    - PhotoFlow
+    - Hugin
+    - Panorama
+    - Technique
+stylesheet: index.css
+template: article.hbt
+nodiscuss: true
 ---
 
 The goal of this tutorial is to show how to create a sort-of-HDR panoramic image using only Free and Open Source tools. To explain my workflow I will use the image below as an example. 
