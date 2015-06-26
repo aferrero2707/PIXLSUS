@@ -1,6 +1,6 @@
 ---
 date: 2015-04-24T10:05:29-05:00
-title: A FL/OSS panorama
+title: A Blended Panorama with PhotoFlow
 sub-title: Creating panoramas with Hugin and PhotoFlow
 
 lede-img: 'pano_lede.png'
