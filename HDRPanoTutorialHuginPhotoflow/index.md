@@ -1,10 +1,10 @@
 ---
 date: 2015-04-24T10:05:29-05:00
-title: Creating HDR panoramas with Hugin and PhotoFlow
-sub-title: A pithy sub-title
+title: A FL/OSS panorama
+sub-title: Creating panoramas with Hugin and PhotoFlow
 
-lede-img: 'pano_heading.jpg'
-lede-attribution: "<a href='http://blog.patdavid.net'>Pat David</a>"
+lede-img: 'pano_lede.png'
+lede-attribution: "<a href='http://photoflowblog.blogspot.fr'>Andrea Ferrero</a>"
 
 author: "Andrea Ferrero"
 author-bio: "Husband, father, scientist and spare-time photographer"
@@ -18,7 +18,7 @@ This panorama was obtained from the combination of six views, each consisting of
 The final result of the post-processing is anticipated below (click to compare with the simple +1EV exposure).
 
 <figure>
-<img src="pano_final.png" data-swap-src="pano_+1EV.png" alt="Final result" width="690" height="322"> 
+<img src="pano_final2.png" data-swap-src="pano_+1EV.png" alt="Final result" width="690" height="328"> 
 <figcaption> Final result of the panorama editing (click to compare to simple +1EV exposure) 
 </figcaption> </figure>
 
@@ -72,8 +72,6 @@ Processing all RAW files of a given folder is quite easy. Assuming that the RAW 
 Of course, you have to change `panorama_dir` to your actual folder and the `NEF` extension to the one of your RAW fles.
 
 Now go for a cup of coffee, and be patient... a panorama with three or five bracketed shots for each view can easily have more than 50 files, and the processing can take half an hour or more. Once the processing completed, there will be one tiff file for each RAW image, an the fun with Hugin can start!
-
-**TODO: add instructions for batch-processing in Darktable and RawTherapee.**
 
 # Stitching the shots with Hugin
 Hugin is a powerful and free software suite for stitching multiple shots into a seamless panorama, and more. Under Linux, Hugin can be usually installed through the package manager of your distribution. In the case of Ubuntu-based distros it can be usually installed with
@@ -205,6 +203,7 @@ The result of the blending looks like that (click the image to see the initial +
 
 The sky looks already much denser and saturated in this version, and the clouds have gained in volume and tonal variations. However, the -1EV image looks even better, therefore we are going to take the sky and clouds from it. 
 
+<a name="sky_blend"></a>
 To include the -1EV image we are going to follow the same procedure done already in the case of the enfuse output:
 
 1. add a new layer of type "Open image" and load the -1EV Hugin output (I've named this new layer "sky")
@@ -243,7 +242,116 @@ The effect of this tone curve is to increase the overall brightness of the image
 </figcaption> </figure>
 
 However, this comes at the expense of an overall increase in the color saturation, which is a typical side effect of RGB curves. While this saturation boost looks quite nice in the hills, the effect is rather disastrous in the sky. The blue as turned electric, and is far from what a nice, saturated blue sky should look like!
+However, there is a imple fix to this problem: change the blend mode of the **curves** layer from **Normal** to **Luminosity**. The tone curve in this case only modified the luminosity of the image, but preserves as much as possible the original colors. The difference between normal and lumnosity blending is shown below (click to see the **Normal** blending). As one can see, the **Luminosity** blend tends to produce a duller image, therefore we will need to fix the overall saturation in the next step.
 
-We are going to fix the colors and add a bit more "pop" to the foreground in the third, and last part of the tutorial...
+<figure>
+<img src="pano_contrast_lumi.png" data-swap-src="pano_contrast.png" alt="Luminosity blend" width="690" height="322"> 
+<figcaption> S-shaped tonal adjustment with **Luminosity** blend mode (click the image to see the version with **Normal** blend mode).
+</figcaption> </figure>
 
-#Conclusion
+To adjust the overall saturation of the image, let's now add an **Hue/Saturation** layer above the tone curve and set the saturation value to **+50**. The result is show below (click to see the **Luminosity** blend output).
+
+<figure>
+<img src="pano_saturation.png" data-swap-src="pano_contrast_lumi.png" alt="Saturation boost" width="690" height="322"> 
+<figcaption> Saturation set to **+50** (click the image to see the **Luminosity** blend output).
+</figcaption> </figure>
+
+This definitely looks better on the hills, however the sky is again "too blue". The solution is to decrease the saturation of the top part through an opacity mask. In this case I have followed the same steps as for the mask of the [sky blend](#sky_blend), but I've changed the transition curve to the one shown here:
+
+<img src="pano_saturation_mask.png" alt="Saturation mask" width="690" height="351">
+
+In the bottom part the mask is perfectly white, and therefore a **+50** saturation boost is applied. On the top the mask is instead just about 30%, and therefore the saturation is increased of only about **+15**. This gives a better overall color balance to the whole image:
+
+<figure>
+<img src="pano_saturation_masked.png" data-swap-src="pano_contrast_lumi.png" alt="Saturation boost after mask" width="690" height="322"> 
+<figcaption> Saturation set to **+50** through a transition mask (click the image to see the **Luminosity** blend output).
+</figcaption> </figure>
+
+##Lab blending
+The image is already quite ok, but I still would like to add some more tonal variations in the hills. This could be done with lots of different techniques, but in this case I will use one that is very simple and straightforward, and that does not require any complex curve or mask since it uses the image data itself. The basic idea is to take the **a** and/or **b** channels of the [**Lab**](https://en.wikipedia.org/wiki/Lab_color_space) colorspace, and combine them with the image itself in **Overlay** blend mode. This will introduce **tonal** variations depending on the **color** of the pixels (since the **a** and **b** channels only encode the color information).
+Here I will assume you are quite familiar wit the Lab colorspace. Otherwise, [here](https://en.wikipedia.org/wiki/Lab_color_space) is the link to the Wikipedia page that should give you enough informations to follow the rest of the tutorial.
+
+Looking at the image, one can already guess that most of the areas in the hills have a yellow component, and will therefore be positive in the **b** channel, while the sky and clouds are neutral or strongly blue, and therefore have **b** values that are negative or close to zero. The grass is obviously green and therefore **negative** in the **a** channel, while the wineyards are brownish and therefore most likely with positive **a** values. In PhotoFlow the **a** and **b** values are re-mapped to a range between 0 and 100%, so that for example **a=0** corresponds to 50%. You will see that this is very convenient for channel blending.
+
+My goal is to lighten the green and the yellow tones, to create a better contrast around the wineyards and add some "volume" to the grass and trees. Let's first of all inspect the **a** channel: for that, we'll need to add a group layer on top of everything (I've called it "ab overlay") and then added a **clone** layer inside this group. The source of the clone layer is set to the **a** channel of the "backgroud" layer, as shown in this screenshot:
+
+<img src="pf_a_channel_clone.png" alt="a channel clone" width="470" height="263"> 
+
+A copy of the **a** channel is shown below, with the contrast enhanced to better see the tonal variations (click to see the original versions):
+
+<figure>
+<img src="pano_a_contrast.png" data-swap-src="pano_a_channel.png" alt="Saturation boost after mask" width="690" height="322"> 
+<figcaption> 
+</figcaption> </figure>
+
+As we have already seen, in the **a** channel the grass is negative and therefore looks dark in the image above. If we want to lighten the grass we therefore need to invert it, to obtain this:
+
+<figure>
+<img src="pano_a_invert_contrast.png" alt="Saturation boost after mask" width="690" height="322"> 
+<figcaption> 
+</figcaption> </figure>
+
+Let's now consider the **b** channel: as sursprising as it might seem, the grass is actually more yellow than green, or at least the **b** channel values in the grass are higher than the inverted **a** values. In addition, the trees at the top of the hill stick nicely out of the clouds, much more than in the **a** channel. All in all, a combination of the two Lab channels seems to be the best for what we want to achieve.
+
+With one exception: the blue sky is very dark in the **b** channel, while the goal is to leave the sky almost unchanged. The solution is to blend the **b** channel into the **a** channel in **Lighten** mode, so that only the **b** pixels that are lighter than the corresponding **a** ones end up in the blended image. The result is shown below (click on the image to see the **b** channel).
+
+<figure>
+<img src="pano_b_lighten_contrast.png" data-swap-src="pano_b_contrast.png" alt="b channel lighten blend" width="690" height="322"> 
+<figcaption> **b** channel blended in **Lighten** mode (click the image to see the **b** channel itself).
+</figcaption> </figure>
+
+And this are the blended **a** and **b** channels with the original contrast:
+
+<img src="pano_b_lighten.png" alt="b channel lighten blend" width="690" height="322"> 
+
+The last act is to change the blending mode of the "ab overlay" group to **Overlay**: the grass and trees get some nice "pop", while the sky remains basically unchanged:
+
+<figure>
+<img src="pano_ab_overlay.png" data-swap-src="pano_saturation_masked.png" alt="ab overlay" width="690" height="322"> 
+<figcaption> Lab channels overlay (click to see the image after the saturation adjustment).
+</figcaption> </figure>
+
+I'm now almost satisfied with the result, except for one thing: the Lab overlay makes the yellow area on the left of the image way too bright. The solution is a gradient mask (horizontal this time) associated to the "ab overlay group", to exclude the left part of the image as shown below:
+
+<img src="pano_ab_overlay_mask.png" alt="overlay blend mask" width="690" height="353">
+
+The final, masked image is shown here, to be compared with the initial starting point:
+
+<figure>
+<img src="pano_ab_overlay_masked.png" data-swap-src="pano_+1EV.png" alt="final result" width="690" height="322"> 
+<figcaption> The image after the masked Lab overlay blend (click to see the initial +1EV version).
+</figcaption> </figure>
+
+# The Final Touch
+Through the tutorial I have intentionally pushed the editing quite above what I would personally find acceptable. The idea was to show how far one can go with the techniques I have described; fortunatey, the non-destructive editing allows to go back on our steps and reduce the strength of the various effects until the result looks really ok.
+
+In this specific case, I have lowered the opacity of the **"contrast"** layer to **90%**, the one of the **"saturation"** layer to **80%** and the one of the **"ab overlay"** group to **40%**. Then, feeling that the **"b channel"** blend was still brightening the yellow areas too much, I have reduced the opacity of the **"b channel"** layer to **70%**.
+
+<figure>
+<img src="pano_adjusted_opacity.png" alt="opacity adjustment" width="690" height="322"> 
+<figcaption> Opacities adjusted for a "softer" edit.
+</figcaption> </figure>
+
+Another thing I still did not like in the image was the overall color balance: the grass in the foreground looked a bit too **"emerald"** instead of **"yellowish green"**, therefore I thought that the image could profit of a general warming up of the colors. For that I have added a curves layer at the top of the editing stack, and brought down the middle of the curve in both the **green** and **blue** channels. The move needs to be quite subtle: I brought the middle point down from **50%** to **47%** in the greens and **45%** in the blues, and then I further reduced the opacity of the adjustment to **50%**. Here comes the warmed-up version, compared with the image before:
+
+<figure>
+<img src="pano_warmer.png" data-swap-src="pano_adjusted_opacity.png" alt="opacity adjustment" width="690" height="322"> 
+<figcaption> Opacities adjusted for a "softer" edit.
+</figcaption> </figure>
+
+At this point I was almost satisfied. However, I still found that the green stuff at the bottom-right of the image attracted too much my attention and distracted the eye. Therefore I darkened the bottom of the image with a slightly curved gradient applied in **"soft light"** blend mode. The gradient was created with the same technique used for blending the various exposures. The transition curve is shown below: in this case, the top part was set to **50% gray** (remember that we blend the gradient in **"soft light"** mode) and the bottom part was moved a bit below 50% to obtain a slightly darkening effect:
+
+<figure>
+<img src="pf_vignetting.png" alt="vignetting gradient" width="690" height="298"> 
+<figcaption> Gradient used for darkening the bottom of the image.
+</figcaption> </figure>
+
+**It's done!** If you managed to follow me 'till the end, you are now rewarded with the final image in all its glory, that you can again compare with the initial starting point.
+
+<figure>
+<img src="pano_final2.png" data-swap-src="pano_+1EV.png" alt="final result" width="690" height="328"> 
+<figcaption> The final image (click to see the initial +1EV version).
+</figcaption> </figure>
+
+It has been a quite long journey to arrive here... and I hope not to have lost too many followers on the way!
+
