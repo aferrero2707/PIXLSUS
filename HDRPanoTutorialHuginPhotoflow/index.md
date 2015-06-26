@@ -24,20 +24,27 @@ template: article.hbt
 nodiscuss: true
 ---
 
-The goal of this tutorial is to show how to create a sort-of-HDR panoramic image using only Free and Open Source tools. To explain my workflow I will use the image below as an example. 
-This panorama was obtained from the combination of six views, each consisting of three bracketed shots at -1EV, 0EV and +1EV exposure. The three exposures are stitched together with the [Hugin](http://hugin.sourceforge.net/) suite, and then exposure-blended with [enfuse](). The [PhotoFlow RAW editor](https://github.com/aferrero2707/PhotoFlow) is used to prepare the initial images and to finalize the processing of the assembled panorama.
+The goal of this tutorial is to show how to create a sort-of-HDR panoramic image using only Free and Open Source tools.
+To explain my workflow I will use the image below as an example.
+
+This panorama was obtained from the combination of six views, each consisting of three bracketed shots at -1EV, 0EV and +1EV exposure.
+The three exposures are stitched together with the [Hugin](http://hugin.sourceforge.net/) suite, and then exposure-blended with [enfuse]().
+The [PhotoFlow RAW editor](https://github.com/aferrero2707/PhotoFlow) is used to prepare the initial images and to finalize the processing of the assembled panorama.
 The final result of the post-processing is anticipated below (click to compare with the simple +1EV exposure).
 
 <figure>
 <img src="pano_final2.png" data-swap-src="pano_+1EV.png" alt="Final result" width="690" height="328"> 
-<figcaption> Final result of the panorama editing (click to compare to simple +1EV exposure) 
-</figcaption> </figure>
+<figcaption>
+Final result of the panorama editing (click to compare to simple +1EV exposure) 
+</figcaption>
+</figure>
 
 In this case I have used the brightest image for the foreground, the darkest one for the sky and clouds, and and exposure-fused one for a seamless transition between the two.
 
 The rest of the post will show how to get there...
 
-Before we continue, let me advise you that I'm not a pro, and that the tips and "recommendations" that I'll be giving in this post are mostly derived from trial-and-error and common sense. Feel free to correct/add/suggest anything... **we are all here to learn**! 
+Before we continue, let me advise you that I'm not a pro, and that the tips and "recommendations" that I'll be giving in this post are mostly derived from trial-and-error and common sense.
+Feel free to correct/add/suggest anything... **we are all here to learn**! 
 
 # Taking the shots
 Shooting a panorama requires a bit of preparation and planning, to make sure that one can get the best out of Hugin when stitching the shots together. Here is my personal "checklist":
