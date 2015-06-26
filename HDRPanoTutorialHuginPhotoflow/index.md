@@ -73,8 +73,6 @@ Of course, you have to change `panorama_dir` to your actual folder and the `NEF`
 
 Now go for a cup of coffee, and be patient... a panorama with three or five bracketed shots for each view can easily have more than 50 files, and the processing can take half an hour or more. Once the processing completed, there will be one tiff file for each RAW image, an the fun with Hugin can start!
 
-**TODO: add instructions for batch-processing in Darktable and RawTherapee.**
-
 # Stitching the shots with Hugin
 Hugin is a powerful and free software suite for stitching multiple shots into a seamless panorama, and more. Under Linux, Hugin can be usually installed through the package manager of your distribution. In the case of Ubuntu-based distros it can be usually installed with
 
