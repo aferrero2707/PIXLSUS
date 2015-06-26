@@ -3,7 +3,7 @@ date: 2015-06-26T11:31:39-0:500
 title: A Blended Panorama with PhotoFlow
 sub-title: Creating panoramas with Hugin and PhotoFlow
 
-lede-img: 'pano_lede.png'
+lede-img: 'pano_lede.jpg'
 lede-attribution: "<a href='http://photoflowblog.blogspot.fr'>Andrea Ferrero</a>"
 
 author: "Andrea Ferrero"
@@ -32,8 +32,8 @@ The three exposures are stitched together with the [Hugin](http://hugin.sourcefo
 The [PhotoFlow RAW editor](https://github.com/aferrero2707/PhotoFlow) is used to prepare the initial images and to finalize the processing of the assembled panorama.
 The final result of the post-processing is anticipated below (click to compare with the simple +1EV exposure).
 
-<figure>
-<img src="pano_final2.png" data-swap-src="pano_+1EV.png" alt="Final result" width="690" height="328"> 
+<figure class='big-vid'>
+<img src="pano_final2.png" data-swap-src="pano_+1EV.png" alt="Final result" width="960" height="457"> 
 <figcaption>
 Final result of the panorama editing (click to compare to simple +1EV exposure) 
 </figcaption>
@@ -46,6 +46,9 @@ The rest of the post will show how to get there...
 Before we continue, let me advise you that I'm not a pro, and that the tips and "recommendations" that I'll be giving in this post are mostly derived from trial-and-error and common sense.
 Feel free to correct/add/suggest anything... **we are all here to learn**! 
 
+
+
+
 # Taking the shots
 Shooting a panorama requires a bit of preparation and planning, to make sure that one can get the best out of Hugin when stitching the shots together. Here is my personal "checklist":
 
@@ -56,6 +59,9 @@ Shooting a panorama requires a bit of preparation and planning, to make sure tha
 * frame the shots a bit wider than needed, to avoid bad surprises when cropping the stitched panorama
 * take all shots with a fixed exposure (manual or locked) to avoid luminance variations that might not be fully compensated by hugin
 * if you shoot during a sunny day, the brightness might vary significantly across the whole panorama; in this case, take three or more bracketed exposures for each view (we will see later how to blend them in the post-processing)
+
+
+
 
 # Processing the RAW files
 If you plan to create the panorama starting from the in-camera Jpeg images, you can safely skip this section. On the other hand, if you are shooting RAW you will need to process and prepare all the input images for Hugin. In this case it is important to make sure that the RAW processing parameters are exactly the same for all the shots. The best is to adjust the parameters on one reference image, and then batch-process the rest of the images using those settings.
@@ -90,6 +96,9 @@ Processing all RAW files of a given folder is quite easy. Assuming that the RAW 
 Of course, you have to change `panorama_dir` to your actual folder and the `NEF` extension to the one of your RAW fles.
 
 Now go for a cup of coffee, and be patient... a panorama with three or five bracketed shots for each view can easily have more than 50 files, and the processing can take half an hour or more. Once the processing completed, there will be one tiff file for each RAW image, an the fun with Hugin can start!
+
+
+
 
 # Stitching the shots with Hugin
 Hugin is a powerful and free software suite for stitching multiple shots into a seamless panorama, and more. Under Linux, Hugin can be usually installed through the package manager of your distribution. In the case of Ubuntu-based distros it can be usually installed with
@@ -135,6 +144,9 @@ The final act starts by clicking on the *Stitch!* button. The input images will 
 
 At the end of the processing, few new images should appear in the output directory: one with an "_blended_fused.tif" suffix containing the output of the final enfuse step, and few with an "_exposure_????.tif" suffix that contain intermediate panoramas for each exposure value.
 
+
+
+
 #Manual exposure blending with PhotoFlow
 *Very often, photo editing is all about getting **what your eyes have seen** out of **what your camera has captured**.* 
 
@@ -151,6 +163,9 @@ The steps that I followed to go from one to the other can be more or less outlin
 The image below shows side-by-side three of the output images produced with Hugin at the end of the first part. The left part contains the brightest panorama, obtained by blending the shots taken at +1EV. The right part contains the darkest version, obtained from the shots taken at -1EV. Finally, the central part shows the result of running the **enfuse** program to combine the -1EV, 0EV and +1EV panoramas. 
 
 <img src="pano_exp_comp.png" width="690" height="322">
+
+
+
 
 ## Exposure blending in general
 In scenes that exhibit strong brightness variations, one often needs to combine different exposures in order to compress the dynamic range so that the overall contrast can be further tweaked without the risk of loosing details in the shadows or highlights.
@@ -170,6 +185,9 @@ At this point it is good to recall that the last step performed by Hugin was to 
 <figcaption> Enfuse output (click to see 0EV version) 
 </figcaption> </figure>
 
+
+
+
 ## Exposure blending in PhotoFlow
 It is time to put all the stuff together. First of all, we should open **PhotoFlow** and load the +1EV image. Next we need to add the enfuse output on top of it: for that you first need to add a new layer and choose the *Open image* tool from the dialog that will open up (see below).
 
@@ -178,6 +196,9 @@ It is time to put all the stuff together. First of all, we should open **PhotoFl
 After clicking the "OK" button, a new layer will be added and the corresponding configuration dialog will be shown. There you can choose the name of the file to be added; in this case, choose the one ending with "_blended_fused.tif" among those created by Hugin:
 
 <img src="pf_open_image_edit.png" width="576" height="348"> 
+
+
+
 
 ### Layer masks: theory (a bit) and practice (a lot)
 
@@ -206,6 +227,9 @@ As one can see from the screenshot above, between the bottom gradient and the "t
 Double-clicking on the "modulation" layer reveals a tone curve which is initially flat: output values are always 50% independently of the input. Since the output of this "modulation" curve is combined with the bottom gradient in **grain merge** mode, nothing happens for the moment. However, something interesting happens when a new point is added and dragged in the curve: the shape of the mask matches exactly the curve, like in the example below.
 
 <img src="pf_modulation_example.png" width="690" height="417"> 
+
+
+
 
 ## The sky/hills transition
 The technique introduced above is used here to create a precise and smooth transition between the sky and the hills. As you can see, with a sufficiently large number of points in the modulation curve one can precisely follow the shape of the hills:
@@ -285,6 +309,9 @@ In the bottom part the mask is perfectly white, and therefore a **+50** saturati
 <figcaption> Saturation set to **+50** through a transition mask (click the image to see the **Luminosity** blend output).
 </figcaption> </figure>
 
+
+
+
 ##Lab blending
 The image is already quite ok, but I still would like to add some more tonal variations in the hills. This could be done with lots of different techniques, but in this case I will use one that is very simple and straightforward, and that does not require any complex curve or mask since it uses the image data itself. The basic idea is to take the **a** and/or **b** channels of the [**Lab**](https://en.wikipedia.org/wiki/Lab_color_space) colorspace, and combine them with the image itself in **Overlay** blend mode. This will introduce **tonal** variations depending on the **color** of the pixels (since the **a** and **b** channels only encode the color information).
 Here I will assume you are quite familiar wit the Lab colorspace. Otherwise, [here](https://en.wikipedia.org/wiki/Lab_color_space) is the link to the Wikipedia page that should give you enough informations to follow the rest of the tutorial.
@@ -339,6 +366,9 @@ The final, masked image is shown here, to be compared with the initial starting 
 <img src="pano_ab_overlay_masked.png" data-swap-src="pano_+1EV.png" alt="final result" width="690" height="322"> 
 <figcaption> The image after the masked Lab overlay blend (click to see the initial +1EV version).
 </figcaption> </figure>
+
+
+
 
 # The Final Touch
 Through the tutorial I have intentionally pushed the editing quite above what I would personally find acceptable. The idea was to show how far one can go with the techniques I have described; fortunatey, the non-destructive editing allows to go back on our steps and reduce the strength of the various effects until the result looks really ok.
