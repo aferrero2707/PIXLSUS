@@ -18,7 +18,7 @@ This panorama was obtained from the combination of six views, each consisting of
 The final result of the post-processing is anticipated below (click to compare with the simple +1EV exposure).
 
 <figure>
-<img src="pano_final.png" data-swap-src="pano_+1EV.png" alt="Final result" width="690" height="322"> 
+<img src="pano_final2.png" data-swap-src="pano_+1EV.png" alt="Final result" width="690" height="328"> 
 <figcaption> Final result of the panorama editing (click to compare to simple +1EV exposure) 
 </figcaption> </figure>
 
