@@ -253,6 +253,7 @@ The result of all the efforts done up to now is shown below; it can be compared 
 <figcaption> Edited image after blending the upper portion of the -1EV version through a layer mask. Click to see the initial +1EV image.
 </figcaption> </figure>
 
+##Contrast and saturation
 We are not quite done yet, as the image is still a bit too dark and flat, however this version will "tolerate" some contrast and luminance boost much better than a single exposure. In this case I've added a **curves** adjustment at the top of the layer's stack, and I've drawn an S-shaped RGB tone curve as shown below:
 
 <img src="pf_tone_curve_edit.png" width="348" height="500"> 
@@ -351,21 +352,21 @@ The final, masked image is shown here, to be compared with the initial starting 
 <figcaption> The image after the masked Lab overlay blend (click to see the initial +1EV version).
 </figcaption> </figure>
 
-# The Final Touch
+#The Final Touch
 Through the tutorial I have intentionally pushed the editing quite above what I would personally find acceptable. The idea was to show how far one can go with the techniques I have described; fortunatey, the non-destructive editing allows to go back on our steps and reduce the strength of the various effects until the result looks really ok.
 
 In this specific case, I have lowered the opacity of the **"contrast"** layer to **90%**, the one of the **"saturation"** layer to **80%** and the one of the **"ab overlay"** group to **40%**. Then, feeling that the **"b channel"** blend was still brightening the yellow areas too much, I have reduced the opacity of the **"b channel"** layer to **70%**.
 
 <figure>
-<img src="pano_adjusted_opacity.png" alt="opacity adjustment" width="690" height="322"> 
-<figcaption> Opacities adjusted for a "softer" edit.
+<img src="pano_adjusted_opacity.png" data-swap-src="pano_ab_overlay_masked.png" alt="opacity adjustment" width="690" height="322"> 
+<figcaption> Opacities adjusted for a "softer" edit (click on the image to see the previous version).
 </figcaption> </figure>
 
 Another thing I still did not like in the image was the overall color balance: the grass in the foreground looked a bit too **"emerald"** instead of **"yellowish green"**, therefore I thought that the image could profit of a general warming up of the colors. For that I have added a curves layer at the top of the editing stack, and brought down the middle of the curve in both the **green** and **blue** channels. The move needs to be quite subtle: I brought the middle point down from **50%** to **47%** in the greens and **45%** in the blues, and then I further reduced the opacity of the adjustment to **50%**. Here comes the warmed-up version, compared with the image before:
 
 <figure>
 <img src="pano_warmer.png" data-swap-src="pano_adjusted_opacity.png" alt="opacity adjustment" width="690" height="322"> 
-<figcaption> Opacities adjusted for a "softer" edit.
+<figcaption> "Warmer" version (click to see the previous version)
 </figcaption> </figure>
 
 At this point I was almost satisfied. However, I still found that the green stuff at the bottom-right of the image attracted too much my attention and distracted the eye. Therefore I darkened the bottom of the image with a slightly curved gradient applied in **"soft light"** blend mode. The gradient was created with the same technique used for blending the various exposures. The transition curve is shown below: in this case, the top part was set to **50% gray** (remember that we blend the gradient in **"soft light"** mode) and the bottom part was moved a bit below 50% to obtain a slightly darkening effect:
@@ -378,7 +379,7 @@ At this point I was almost satisfied. However, I still found that the green stuf
 **It's done!** If you managed to follow me 'till the end, you are now rewarded with the final image in all its glory, that you can again compare with the initial starting point.
 
 <figure>
-<img src="pano_final2.png" data-swap-src="pano_+1EV.png" alt="final result" width="690" height="328"> 
+<img src="pano_final2.png" data-swap-src="pano_+1EV-cropped.png" alt="final result" width="690" height="328"> 
 <figcaption> The final image (click to see the initial +1EV version).
 </figcaption> </figure>
 
