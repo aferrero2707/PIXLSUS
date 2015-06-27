@@ -73,7 +73,7 @@ Of course, you have to change `panorama_dir` to your actual folder and the `NEF`
 
 Now go for a cup of coffee, and be patient... a panorama with three or five bracketed shots for each view can easily have more than 50 files, and the processing can take half an hour or more. Once the processing completed, there will be one tiff file for each RAW image, an the fun with Hugin can start!
 
-# Stitching the shots with Hugin
+# Assembling the shots
 Hugin is a powerful and free software suite for stitching multiple shots into a seamless panorama, and more. Under Linux, Hugin can be usually installed through the package manager of your distribution. In the case of Ubuntu-based distros it can be usually installed with
 
     sudo apt-get install hugin
@@ -117,7 +117,7 @@ The final act starts by clicking on the *Stitch!* button. The input images will 
 
 At the end of the processing, few new images should appear in the output directory: one with an "_blended_fused.tif" suffix containing the output of the final enfuse step, and few with an "_exposure_????.tif" suffix that contain intermediate panoramas for each exposure value.
 
-#Manual exposure blending with PhotoFlow
+#Blending the exposures
 *Very often, photo editing is all about getting **what your eyes have seen** out of **what your camera has captured**.* 
 
 The image that will be edited through this tutorial is no exception: the human vision system can "compensate" large luminosity variations and can "record" scenes with a wider dynamic range than your camera sensor. In the following I will attempt to restore such large dynamics by combining under- and over-exposed shots together, in a way that does not produce unpleasing halos or artifacts. Nevertheless, I have intentionally pushed the edit a bit "over the top" in order to better show how far one can go with such a technique. 
@@ -132,7 +132,10 @@ The steps that I followed to go from one to the other can be more or less outlin
 
 The image below shows side-by-side three of the output images produced with Hugin at the end of the first part. The left part contains the brightest panorama, obtained by blending the shots taken at +1EV. The right part contains the darkest version, obtained from the shots taken at -1EV. Finally, the central part shows the result of running the **enfuse** program to combine the -1EV, 0EV and +1EV panoramas. 
 
+<figure>
 <img src="pano_exp_comp.png" width="690" height="322">
+<figcaption> Comparison between the +1EV exposure (left), the enfuse output (center) and the -1EV exposure (right) 
+</figcaption> </figure>
 
 ## Exposure blending in general
 In scenes that exhibit strong brightness variations, one often needs to combine different exposures in order to compress the dynamic range so that the overall contrast can be further tweaked without the risk of loosing details in the shadows or highlights.
@@ -140,8 +143,10 @@ In scenes that exhibit strong brightness variations, one often needs to combine 
 In this case, the name of the game is "seamless blending", i.e. combining the exposures in a way that looks natural, without visible transitions or halos.
 In our specific case, the easiest thing would be to simply combine the +1EV and -1EV images through some smooth transition, like in the example below.
 
+<figure>
 <img src="pano_+1EV_-1EV_blend.png" width="690" height="322"> 
-
+<figcaption> Simple blending of the +1EV and -1EV exposures 
+</figcaption> </figure>
 
 The result is not too bad, however it is very difficult to avoid some brightening of the bottom part of the clouds (or alternatively some darkening of the hills), something that will most likely look artificial even if the effect is subtle (our brain will recognize that something is wrong, even if one cannot clearly explain the reason...). We need something to "bridge" the two images, so that the transition looks more natural. 
 
@@ -155,11 +160,17 @@ At this point it is good to recall that the last step performed by Hugin was to 
 ## Exposure blending in PhotoFlow
 It is time to put all the stuff together. First of all, we should open **PhotoFlow** and load the +1EV image. Next we need to add the enfuse output on top of it: for that you first need to add a new layer and choose the *Open image* tool from the dialog that will open up (see below).
 
+<figure>
 <img src="pf_add_layer_edit.png" width="690" height="415"> 
+<figcaption> Inserting as image from disk as a layer
+</figcaption> </figure>
 
 After clicking the "OK" button, a new layer will be added and the corresponding configuration dialog will be shown. There you can choose the name of the file to be added; in this case, choose the one ending with "_blended_fused.tif" among those created by Hugin:
 
+<figure>
 <img src="pf_open_image_edit.png" width="576" height="348"> 
+<figcaption> "Open image" tool dialog
+</figcaption> </figure>
 
 ### Layer masks: theory (a bit) and practice (a lot)
 
