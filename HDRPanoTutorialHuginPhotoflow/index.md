@@ -8,7 +8,7 @@ lede-attribution: "<a href='http://photoflowblog.blogspot.fr'>Andrea Ferrero</a>
 
 author: "Andrea Ferrero"
 author-bio: "Husband, father, scientist and spare-time photographer"
-author-img: ''
+author-img: '/images/authors/andrea-ferrero.png'
 
 layout: article
 
@@ -49,7 +49,7 @@ Feel free to correct/add/suggest anything... **we are all here to learn**!
 
 
 
-# Taking the shots
+## Taking the shots
 Shooting a panorama requires a bit of preparation and planning, to make sure that one can get the best out of Hugin when stitching the shots together. Here is my personal "checklist":
 
 * set the camera to manual focus, so that the focus plane is the same for all shots
@@ -63,7 +63,7 @@ Shooting a panorama requires a bit of preparation and planning, to make sure tha
 
 
 
-# Processing the RAW files
+## Processing the RAW files
 If you plan to create the panorama starting from the in-camera Jpeg images, you can safely skip this section. On the other hand, if you are shooting RAW you will need to process and prepare all the input images for Hugin. In this case it is important to make sure that the RAW processing parameters are exactly the same for all the shots. The best is to adjust the parameters on one reference image, and then batch-process the rest of the images using those settings.
 
 Loading and processing a RAW file is rather easy:
@@ -71,11 +71,21 @@ Loading and processing a RAW file is rather easy:
 1. click the "Open" button and choose the appropriate RAW file from your hard disk; the image preview area will show at this point a grey and rather dark image
 2. add a "RAW developer" layer; a configuration dialog will show up which allows to access and modify all the typical RAW processing parameters (white balance, exposure, color conversion, etc... see screenshots below).
 
-<img src="pf_raw_wb.png" width="384" height="412" style="float:left; margin-right:5px;" > 
-<img src="pf_raw_exposure.png" width="383" height="246" style="float:left; margin-right:5px;" > 
+<figure>
+<img src="pf_raw_wb2.png" width="380" height="409">
+</figure>
 
-<img src="pf_raw_demo.png" width="384" height="246" style="float:left; margin-right:5px;"> 
-<img src="pf_raw_output.png" width="383" height="247" style="float:left; margin-right:5px;"> 
+<figure>
+<img src="pf_raw_exposure.png" width="380" height="243" > 
+</figure>
+
+<figure>
+<img src="pf_raw_demo.png" width="380" height="243" > 
+</figure>
+
+<figure>
+<img src="pf_raw_output.png" width="380" height="243" > 
+</figure>
 
 More details on the RAW processing in PhotoFlow can be found in [this tutorial](http://photoflowblog.blogspot.fr/2014/09/tutorial-how-to-process-raw-image-in.html).
 
@@ -100,7 +110,7 @@ Now go for a cup of coffee, and be patient... a panorama with three or five brac
 
 
 
-# Stitching the shots with Hugin
+## Stitching the shots with Hugin
 Hugin is a powerful and free software suite for stitching multiple shots into a seamless panorama, and more. Under Linux, Hugin can be usually installed through the package manager of your distribution. In the case of Ubuntu-based distros it can be usually installed with
 
     sudo apt-get install hugin
@@ -147,7 +157,7 @@ At the end of the processing, few new images should appear in the output directo
 
 
 
-#Manual exposure blending with PhotoFlow
+##Manual exposure blending with PhotoFlow
 *Very often, photo editing is all about getting **what your eyes have seen** out of **what your camera has captured**.* 
 
 The image that will be edited through this tutorial is no exception: the human vision system can "compensate" large luminosity variations and can "record" scenes with a wider dynamic range than your camera sensor. In the following I will attempt to restore such large dynamics by combining under- and over-exposed shots together, in a way that does not produce unpleasing halos or artifacts. Nevertheless, I have intentionally pushed the edit a bit "over the top" in order to better show how far one can go with such a technique. 
@@ -167,7 +177,7 @@ The image below shows side-by-side three of the output images produced with Hugi
 
 
 
-## Exposure blending in general
+### Exposure blending in general
 In scenes that exhibit strong brightness variations, one often needs to combine different exposures in order to compress the dynamic range so that the overall contrast can be further tweaked without the risk of loosing details in the shadows or highlights.
 
 In this case, the name of the game is "seamless blending", i.e. combining the exposures in a way that looks natural, without visible transitions or halos.
@@ -188,7 +198,7 @@ At this point it is good to recall that the last step performed by Hugin was to 
 
 
 
-## Exposure blending in PhotoFlow
+### Exposure blending in PhotoFlow
 It is time to put all the stuff together. First of all, we should open **PhotoFlow** and load the +1EV image. Next we need to add the enfuse output on top of it: for that you first need to add a new layer and choose the *Open image* tool from the dialog that will open up (see below).
 
 <img src="pf_add_layer_edit.png" width="690" height="415"> 
@@ -200,7 +210,7 @@ After clicking the "OK" button, a new layer will be added and the corresponding 
 
 
 
-### Layer masks: theory (a bit) and practice (a lot)
+#### Layer masks: theory (a bit) and practice (a lot)
 
 For the moment, the new layer completely replaces the background image. This is not the desired result: instead, we want to keep the hills from the background layer and only take the clouds from the "_blended_fused.tif" version. In other words, we need a **layer mask**.
 
@@ -231,10 +241,12 @@ Double-clicking on the "modulation" layer reveals a tone curve which is initiall
 
 
 
-## The sky/hills transition
+### The sky/hills transition
 The technique introduced above is used here to create a precise and smooth transition between the sky and the hills. As you can see, with a sufficiently large number of points in the modulation curve one can precisely follow the shape of the hills:
 
+<figure class='big-vid'>
 <img src="pf_enfuse_mask.png" width="690" height="311"> 
+</figure>
 
 The result of the blending looks like that (click the image to see the initial +1EV version):
 
@@ -274,7 +286,9 @@ The result of all the efforts done up to now is shown below; it can be compared 
 
 We are not quite done yet, as the image is still a bit too dark and flat, however this version will "tolerate" some contrast and luminance boost much better than a single exposure. In this case I've added a **curves** adjustment at the top of the layer's stack, and I've drawn an S-shaped RGB tone curve as shown below:
 
+<figure>
 <img src="pf_tone_curve_edit.png" width="348" height="500"> 
+</figure>
 
 The effect of this tone curve is to increase the overall brightness of the image (the middle point is moved to the left) and to compress the shadows and highlights without modifying the black and white points (i.e. the extremes of the curve). This curve definitely gives "pop" to the image (click to see the version before the tone adjustment):
 
@@ -312,7 +326,7 @@ In the bottom part the mask is perfectly white, and therefore a **+50** saturati
 
 
 
-##Lab blending
+###Lab blending
 The image is already quite ok, but I still would like to add some more tonal variations in the hills. This could be done with lots of different techniques, but in this case I will use one that is very simple and straightforward, and that does not require any complex curve or mask since it uses the image data itself. The basic idea is to take the **a** and/or **b** channels of the [**Lab**](https://en.wikipedia.org/wiki/Lab_color_space) colorspace, and combine them with the image itself in **Overlay** blend mode. This will introduce **tonal** variations depending on the **color** of the pixels (since the **a** and **b** channels only encode the color information).
 Here I will assume you are quite familiar wit the Lab colorspace. Otherwise, [here](https://en.wikipedia.org/wiki/Lab_color_space) is the link to the Wikipedia page that should give you enough informations to follow the rest of the tutorial.
 
@@ -320,7 +334,9 @@ Looking at the image, one can already guess that most of the areas in the hills 
 
 My goal is to lighten the green and the yellow tones, to create a better contrast around the wineyards and add some "volume" to the grass and trees. Let's first of all inspect the **a** channel: for that, we'll need to add a group layer on top of everything (I've called it "ab overlay") and then added a **clone** layer inside this group. The source of the clone layer is set to the **a** channel of the "backgroud" layer, as shown in this screenshot:
 
+<figure>
 <img src="pf_a_channel_clone.png" alt="a channel clone" width="470" height="263"> 
+</figure>
 
 A copy of the **a** channel is shown below, with the contrast enhanced to better see the tonal variations (click to see the original versions):
 
@@ -370,7 +386,7 @@ The final, masked image is shown here, to be compared with the initial starting 
 
 
 
-# The Final Touch
+## The Final Touch
 Through the tutorial I have intentionally pushed the editing quite above what I would personally find acceptable. The idea was to show how far one can go with the techniques I have described; fortunatey, the non-destructive editing allows to go back on our steps and reduce the strength of the various effects until the result looks really ok.
 
 In this specific case, I have lowered the opacity of the **"contrast"** layer to **90%**, the one of the **"saturation"** layer to **80%** and the one of the **"ab overlay"** group to **40%**. Then, feeling that the **"b channel"** blend was still brightening the yellow areas too much, I have reduced the opacity of the **"b channel"** layer to **70%**.
@@ -396,7 +412,7 @@ At this point I was almost satisfied. However, I still found that the green stuf
 
 **It's done!** If you managed to follow me 'till the end, you are now rewarded with the final image in all its glory, that you can again compare with the initial starting point.
 
-<figure>
+<figure class='big-vid'>
 <img src="pano_final2.png" data-swap-src="pano_+1EV.png" alt="final result" width="690" height="328"> 
 <figcaption> The final image (click to see the initial +1EV version).
 </figcaption> </figure>
