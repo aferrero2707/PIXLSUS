@@ -234,11 +234,17 @@ After activating the mask of the "sky" layer, add a new layer inside it and choo
 
 In the tool configuration dialog that will pop-up, one has to choose the desired source layer among those proposed in the list under the label "Layer name". The generic naming scheme of the layers in the list is "[root group name]/root layer name/OMap/[mask group name]/[maks layer name]", where the items inside square brackets are optional. 
 
+<figure>
 <img src="pf_sky_mask_clone_layer.png" width="470" height="398"> 
+<figcaption> Choice of the clone source layer 
+</figcaption> </figure>
 
 In this specific case, I want to apply a smoother transition curve to the same base gradient already used in the mask of the "enfuse" layer. For that we need to choose "enfuse/OMap/gradient modulation (blended)" in order to clone the output of the "gradient modulation" group **after the *grain merge* blend**, and then add a new **curves** tool above the cloned layer:
 
+<figure>
 <img src="pf_sky_mask.png" width="690" height="296"> 
+<figcaption> The final transition mask between the hills and the sky
+</figcaption> </figure>
 
 The result of all the efforts done up to now is shown below; it can be compared with the initial starting point by clicking on the image itself:
 
@@ -292,20 +298,23 @@ Looking at the image, one can already guess that most of the areas in the hills 
 
 My goal is to lighten the green and the yellow tones, to create a better contrast around the wineyards and add some "volume" to the grass and trees. Let's first of all inspect the **a** channel: for that, we'll need to add a group layer on top of everything (I've called it "ab overlay") and then added a **clone** layer inside this group. The source of the clone layer is set to the **a** channel of the "backgroud" layer, as shown in this screenshot:
 
+<figure>
 <img src="pf_a_channel_clone.png" alt="a channel clone" width="470" height="263"> 
+<figcaption> Cloning of the Lab "a" channel of the background layer
+</figcaption> </figure>
 
 A copy of the **a** channel is shown below, with the contrast enhanced to better see the tonal variations (click to see the original versions):
 
 <figure>
 <img src="pano_a_contrast.png" data-swap-src="pano_a_channel.png" alt="Saturation boost after mask" width="690" height="322"> 
-<figcaption> 
+<figcaption> The Lab **a** channel (boosted contrast)
 </figcaption> </figure>
 
 As we have already seen, in the **a** channel the grass is negative and therefore looks dark in the image above. If we want to lighten the grass we therefore need to invert it, to obtain this:
 
 <figure>
 <img src="pano_a_invert_contrast.png" alt="Saturation boost after mask" width="690" height="322"> 
-<figcaption> 
+<figcaption> The inverted Lab **a** channel (boosted contrast)
 </figcaption> </figure>
 
 Let's now consider the **b** channel: as sursprising as it might seem, the grass is actually more yellow than green, or at least the **b** channel values in the grass are higher than the inverted **a** values. In addition, the trees at the top of the hill stick nicely out of the clouds, much more than in the **a** channel. All in all, a combination of the two Lab channels seems to be the best for what we want to achieve.
@@ -314,12 +323,15 @@ With one exception: the blue sky is very dark in the **b** channel, while the go
 
 <figure>
 <img src="pano_b_lighten_contrast.png" data-swap-src="pano_b_contrast.png" alt="b channel lighten blend" width="690" height="322"> 
-<figcaption> **b** channel blended in **Lighten** mode (click the image to see the **b** channel itself).
+<figcaption> **b** channel blended in **Lighten** mode (boosted contrast, click the image to see the **b** channel itself).
 </figcaption> </figure>
 
 And this are the blended **a** and **b** channels with the original contrast:
 
+<figure>
 <img src="pano_b_lighten.png" alt="b channel lighten blend" width="690" height="322"> 
+<figcaption> The final **a** and **b** mask, without contrast correction
+</figcaption> </figure>
 
 The last act is to change the blending mode of the "ab overlay" group to **Overlay**: the grass and trees get some nice "pop", while the sky remains basically unchanged:
 
