@@ -178,7 +178,10 @@ For the moment, the new layer completely replaces the background image. This is 
 
 To access the mask associated to the "enfuse" layer, double-click on the small gradient icon next to the name of the layer itself. This will open a new tab with an initially empty stack, where we can start adding layers to generate the desired mask.
 
+<figure>
 <img src="pf_enfuse_before_blend_edit.png" width="690" height="417"> 
+<figcaption> How to access the grayscale mask associated to a layer
+</figcaption> </figure>
 
 In PhotoFlow, masks are edited the same way as the rest of the image: through a stack of layers that can be associated to most of the available tools. In this specific case, we are going to use a combination of gradients and curves to create a smooth transition that follows the shape of the edge between the hills and the clouds. The technique is explained in detail in [this screencast](https://www.youtube.com/watch?v=kapppq-PbTk). To avoid the boring and lengthy procedure of creating all the necessary layers, you can download  [this preset file](http://aferrero2707.github.io/PhotoFlow/data/presets/gradient_modulation.pfp) and load it as shown below:
 
@@ -209,7 +212,7 @@ The result of the blending looks like that (click the image to see the initial +
 
 <figure>
 <img src="pano_enfuse_blended.png" data-swap-src="pano_+1EV.png" alt="Final result" width="690" height="328"> 
-<figcaption> Enfuse output blendednwith the +1EV image (click to see the initial +1EV version) 
+<figcaption> Enfuse output blended with the +1EV image (click to see the initial +1EV version) 
 </figcaption> </figure>
 
 The sky looks already much denser and saturated in this version, and the clouds have gained in volume and tonal variations. However, the -1EV image looks even better, therefore we are going to take the sky and clouds from it. 
@@ -224,7 +227,10 @@ Fortunately we are not obliged to recreate the mask from scratch. PhotoFlow incl
 
 After activating the mask of the "sky" layer, add a new layer inside it and choose the "clone layer" tool (see screenshot below).
 
+<figure>
 <img src="pf_clone_layer.png" width="661" height="500"> 
+<figcaption> Cloning a layer from one mask to another
+</figcaption> </figure>
 
 In the tool configuration dialog that will pop-up, one has to choose the desired source layer among those proposed in the list under the label "Layer name". The generic naming scheme of the layers in the list is "[root group name]/root layer name/OMap/[mask group name]/[maks layer name]", where the items inside square brackets are optional. 
 
