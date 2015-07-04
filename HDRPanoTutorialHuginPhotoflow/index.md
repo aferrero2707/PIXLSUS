@@ -33,7 +33,7 @@ The [PhotoFlow RAW editor](https://github.com/aferrero2707/PhotoFlow) is used to
 The final result of the post-processing is below:
 
 <figure class='big-vid'>
-<img src="pano_final2.png" data-swap-src="pano_+1EV.png" alt="Final result" width="960" height="457"> 
+<img src="pano_final2.jpg" data-swap-src="pano_+1EV.jpg" alt="Final result" width="960" height="457"> 
 <figcaption>
 Final result of the panorama editing (click to compare to simple +1EV exposure) 
 </figcaption>
@@ -183,8 +183,8 @@ The steps that I followed to go from one to the other can be more or less outlin
 
 The image below shows side-by-side three of the output images produced with Hugin at the end of the first part. The left part contains the brightest panorama, obtained by blending the shots taken at +1EV. The right part contains the darkest version, obtained from the shots taken at -1EV. Finally, the central part shows the result of running the **enfuse** program to combine the -1EV, 0EV and +1EV panoramas. 
 
-<figure class='big-vid'>
-<img src="pano_exp_comp.png" width="690" height="322">
+<figure>
+<img src="pano_exp_comp.jpg" width="640" height="299">
 <figcaption> Comparison between the +1EV exposure (left), the enfuse output (center) and the -1EV exposure (right) 
 </figcaption> </figure>
 
@@ -198,16 +198,18 @@ In this case, the name of the game is "seamless blending", i.e. combining the ex
 In our specific case, the easiest thing would be to simply combine the +1EV and -1EV images through some smooth transition, like in the example below.
 
 <figure class='big-vid'>
-<img src="pano_+1EV_-1EV_blend.png" width="690" height="322"> 
-<figcaption> Simple blending of the +1EV and -1EV exposures 
-</figcaption> </figure>
+<img src="pano_+1EV_-1EV_blend.jpg" width="925" height="433" style="width: initial;"> 
+<figcaption>
+Simple blending of the +1EV and -1EV exposures 
+</figcaption>
+</figure>
 
 The result is not too bad, however it is very difficult to avoid some brightening of the bottom part of the clouds (or alternatively some darkening of the hills), something that will most likely look artificial even if the effect is subtle (our brain will recognize that something is wrong, even if one cannot clearly explain the reason...). We need something to "bridge" the two images, so that the transition looks more natural. 
 
 At this point it is good to recall that the last step performed by Hugin was to call the **enfuse** program to blend the three bracketed exposures. The enfuse output is somehow intermediate between the -1EV and +1EV versions, however a side-by-side comparison with the 0EV image reveals the subtle and sophisticated work done by the program: the foreground hill is brighter and the clouds are darker than in the 0EV version. And even more importantly, this job is done without triggering any alarm in your brain! Hence, the enfuse output is a perfect candidate to improve the transition between the hill and the sky.
 
 <figure class='big-vid'>
-<img src="pano_enfuse.png" data-swap-src="pano_0EV.png" alt="Final result" width="690" height="322"> 
+<img src="pano_enfuse.jpg" data-swap-src="pano_0EV.jpg" alt="Final result" width="960" height="449"> 
 <figcaption> Enfuse output (click to see 0EV version) 
 </figcaption> </figure>
 
@@ -219,18 +221,17 @@ It is time to put all the stuff together.
 First of all, we should open **PhotoFlow** and load the +1EV image.
 Next we need to add the enfuse output on top of it: for that you first need to add a new layer (**1**) and choose the *Open image* tool from the dialog that will open up (**2**)(see below).
 
-<figure>
-<img src="pf_add_layer_edit.png" width="690" height="415"> 
+<figure class='big-vid'>
+<img src="pf_add_layer_edit.png" width="960" height="578"> 
 <figcaption> Inserting as image from disk as a layer
 </figcaption> </figure>
 
 After clicking the "OK" button, a new layer will be added and the corresponding configuration dialog will be shown. There you can choose the name of the file to be added; in this case, choose the one ending with "_blended_fused.tif" among those created by Hugin:
 
 <figure>
-<img src="pf_open_image_edit.png" width="576" height="348"> 
+<img src="pf_open_image_edit.png" width="469" height="235"> 
 <figcaption> "Open image" tool dialog
 </figcaption> </figure>
-
 
 
 
@@ -240,10 +241,12 @@ For the moment, the new layer completely replaces the background image. This is 
 
 To access the mask associated to the "enfuse" layer, double-click on the small gradient icon next to the name of the layer itself. This will open a new tab with an initially empty stack, where we can start adding layers to generate the desired mask.
 
-<figure>
-<img src="pf_enfuse_before_blend_edit.png" width="690" height="417"> 
-<figcaption> How to access the grayscale mask associated to a layer
-</figcaption> </figure>
+<figure class='big-vid'>
+<img src="pf_enfuse_before_blend_edit.png" width="960" height="581"> 
+<figcaption>
+How to access the grayscale mask associated to a layer
+</figcaption>
+</figure>
 
 In PhotoFlow, masks are edited the same way as the rest of the image: through a stack of layers that can be associated to most of the available tools. In this specific case, we are going to use a combination of gradients and curves to create a smooth transition that follows the shape of the edge between the hills and the clouds. The technique is explained in detail in [this screencast](https://www.youtube.com/watch?v=kapppq-PbTk).
 
@@ -257,7 +260,7 @@ In PhotoFlow, masks are edited the same way as the rest of the image: through a 
 To avoid the boring and lengthy procedure of creating all the necessary layers, you can download  [this preset file](http://aferrero2707.github.io/PhotoFlow/data/presets/gradient_modulation.pfp) and load it as shown below:
 
 <figure class='big-vid'>
-<img src="pf_enfuse_mask_initial.png" width="690" height="327"> 
+<img src="pf_enfuse_mask_initial.png" width="960" height="456"> 
 </figure>
 
 The mask is initially a simple vertical linear gradient. At the bottom (where the mask is black) the associated layer is completely transparent and therefore hidden, while at the top (where the mask is white) the layer is completely opaque and therefore replaces anything below it. Everywhere in between, the layer has a degree of transparency equal to the shade of gray in the mask.
@@ -266,7 +269,9 @@ In order to show the mask, activate the "show active layer" radio button below t
 
 If the rightmost point in the curve is moved to the left, and the leftmost to the right, it is possible to modify the vertical gradient and the reduce the size of the transition between pure black and pure white, as shown below:
 
-<img src="pf_transition_example.png" width="690" height="417"> 
+<figure class='big-vid'>
+<img src="pf_transition_example.jpg" width="960" height="581"> 
+</figure>
 
 We are getting closer to our goal of revealing the hills from the background layer, by making the corresponding portion of the mask purely black. However, the transition we have obtained so far is straight, while the contour of the hills has a quite complex curvy shape... this is where the second **curves** adjustment, associated to the "modulation" layer, comes into play.
 
@@ -274,7 +279,9 @@ As one can see from the screenshot above, between the bottom gradient and the "t
 
 Double-clicking on the "modulation" layer reveals a tone curve which is initially flat: output values are always 50% independently of the input. Since the output of this "modulation" curve is combined with the bottom gradient in **grain merge** mode, nothing happens for the moment. However, something interesting happens when a new point is added and dragged in the curve: the shape of the mask matches exactly the curve, like in the example below.
 
-<img src="pf_modulation_example.png" width="690" height="417"> 
+<figure class='big-vid'>
+<img src="pf_modulation_example.jpg" width="960" height="581"> 
+</figure>
 
 
 
@@ -283,15 +290,17 @@ Double-clicking on the "modulation" layer reveals a tone curve which is initiall
 The technique introduced above is used here to create a precise and smooth transition between the sky and the hills. As you can see, with a sufficiently large number of points in the modulation curve one can precisely follow the shape of the hills:
 
 <figure class='big-vid'>
-<img src="pf_enfuse_mask.png" width="690" height="311"> 
+<img src="pf_enfuse_mask.png" width="960" height="433"> 
 </figure>
 
 The result of the blending looks like that (click the image to see the initial +1EV version):
 
 <figure class='big-vid'>
-<img src="pano_enfuse_blended.png" data-swap-src="pano_+1EV.png" alt="Final result" width="690" height="328"> 
-<figcaption> Enfuse output blended with the +1EV image (click to see the initial +1EV version) 
-</figcaption> </figure>
+<img src="pano_enfuse_blended.jpg" data-swap-src="pano_+1EV.jpg" alt="Final result" width="690" height="328"> 
+<figcaption>
+Enfuse output blended with the +1EV image (click to see the initial +1EV version) 
+</figcaption>
+</figure>
 
 The sky looks already much denser and saturated in this version, and the clouds have gained in volume and tonal variations. However, the -1EV image looks even better, therefore we are going to take the sky and clouds from it. 
 
@@ -307,44 +316,53 @@ Fortunately we are not obliged to recreate the mask from scratch. PhotoFlow incl
 After activating the mask of the "sky" layer, add a new layer inside it and choose the "clone layer" tool (see screenshot below).
 
 <figure>
-<img src="pf_clone_layer.png" width="661" height="500"> 
-<figcaption> Cloning a layer from one mask to another
-</figcaption> </figure>
+<img src="pf_clone_layer.png" width="640" height="487"> 
+<figcaption>
+Cloning a layer from one mask to another
+</figcaption>
+</figure>
 
 In the tool configuration dialog that will pop-up, one has to choose the desired source layer among those proposed in the list under the label "Layer name". The generic naming scheme of the layers in the list is "[root group name]/root layer name/OMap/[mask group name]/[maks layer name]", where the items inside square brackets are optional. 
 
 <figure>
 <img src="pf_sky_mask_clone_layer.png" width="470" height="398"> 
-<figcaption> Choice of the clone source layer 
-</figcaption> </figure>
+<figcaption>
+Choice of the clone source layer 
+</figcaption>
+</figure>
 
 In this specific case, I want to apply a smoother transition curve to the same base gradient already used in the mask of the "enfuse" layer. For that we need to choose "enfuse/OMap/gradient modulation (blended)" in order to clone the output of the "gradient modulation" group **after the *grain merge* blend**, and then add a new **curves** tool above the cloned layer:
 
-<figure>
-<img src="pf_sky_mask.png" width="690" height="296"> 
-<figcaption> The final transition mask between the hills and the sky
-</figcaption> </figure>
+<figure class='big-vid'>
+<img src="pf_sky_mask.jpg" width="960" height="413"> 
+<figcaption>The final transition mask between the hills and the sky
+</figcaption>
+</figure>
 
 The result of all the efforts done up to now is shown below; it can be compared with the initial starting point by clicking on the image itself:
 
 <figure class='big-vid'>
-<img src="pano_sky_blended.png" data-swap-src="pano_+1EV.png" alt="Final result" width="690" height="322"> 
-<figcaption> Edited image after blending the upper portion of the -1EV version through a layer mask. Click to see the initial +1EV image.
-</figcaption> </figure>
+<img src="pano_sky_blended.jpg" data-swap-src="pano_+1EV.jpg" alt="Final result" width="690" height="322"> 
+<figcaption>
+Edited image after blending the upper portion of the -1EV version through a layer mask. Click to see the initial +1EV image.
+</figcaption>
+</figure>
 
-##Contrast and saturation
+## Contrast and saturation
 We are not quite done yet, as the image is still a bit too dark and flat, however this version will "tolerate" some contrast and luminance boost much better than a single exposure. In this case I've added a **curves** adjustment at the top of the layer's stack, and I've drawn an S-shaped RGB tone curve as shown below:
 
 <figure>
-<img src="pf_tone_curve_edit.png" width="348" height="500"> 
+<img src="pf_tone_curve_edit.png" width="468" height="672"> 
 </figure>
 
 The effect of this tone curve is to increase the overall brightness of the image (the middle point is moved to the left) and to compress the shadows and highlights without modifying the black and white points (i.e. the extremes of the curve). This curve definitely gives "pop" to the image (click to see the version before the tone adjustment):
 
 <figure class='big-vid'>
-<img src="pano_contrast.png" data-swap-src="pano_sky_blended.png" alt="Final result" width="690" height="322"> 
-<figcaption> Result of the S-shaped tonal adjustment (click the image to see the version before the adjustment).
-</figcaption> </figure>
+<img src="pano_contrast.jpg" data-swap-src="pano_sky_blended.jpg" alt="Final result" width="960" height="457"> 
+<figcaption>
+Result of the S-shaped tonal adjustment (click the image to see the version before the adjustment).
+</figcaption>
+</figure>
 
 However, this comes at the expense of an overall increase in the color saturation, which is a typical side effect of RGB curves.
 While this saturation boost looks quite nice in the hills, the effect is rather disastrous in the sky.
@@ -356,30 +374,37 @@ The difference between normal and lumnosity blending is shown below (click to se
 As one can see, the **Luminosity** blend tends to produce a duller image, therefore we will need to fix the overall saturation in the next step.
 
 <figure class='big-vid'>
-<img src="pano_contrast_lumi.png" data-swap-src="pano_contrast.png" alt="Luminosity blend" width="690" height="322"> 
-<figcaption> S-shaped tonal adjustment with **Luminosity** blend mode (click the image to see the version with **Normal** blend mode).
-</figcaption> </figure>
+<img src="pano_contrast_lumi.jpg" data-swap-src="pano_contrast.jpg" alt="Luminosity blend" width="960" height="457"> 
+<figcaption>
+S-shaped tonal adjustment with **Luminosity** blend mode (click the image to see the version with **Normal** blend mode).
+</figcaption>
+</figure>
 
 To adjust the overall saturation of the image, let's now add an **Hue/Saturation** layer above the tone curve and set the saturation value to **+50**.
 The result is shown below (click to see the **Luminosity** blend output).
 
 <figure class='big-vid'>
-<img src="pano_saturation.png" data-swap-src="pano_contrast_lumi.png" alt="Saturation boost" width="690" height="322"> 
-<figcaption> Saturation set to **+50** (click the image to see the **Luminosity** blend output).
-</figcaption> </figure>
+<img src="pano_saturation.jpg" data-swap-src="pano_contrast_lumi.jpg" alt="Saturation boost" width="960" height="457"> 
+<figcaption>
+Saturation set to **+50** (click the image to see the **Luminosity** blend output).
+</figcaption>
+</figure>
 
 This definitely looks better on the hills, however the sky is again "too blue".
 The solution is to decrease the saturation of the top part through an opacity mask.
 In this case I have followed the same steps as for the mask of the [sky blend](#sky_blend), but I've changed the transition curve to the one shown here:
 
-<img src="pano_saturation_mask.png" alt="Saturation mask" width="690" height="351">
+<figure class='big-vid'>
+<img src="pano_saturation_mask.jpg" alt="Saturation mask" width="960" height="488">
+</figure>
 
 In the bottom part the mask is perfectly white, and therefore a **+50** saturation boost is applied. On the top the mask is instead just about 30%, and therefore the saturation is increased of only about **+15**. This gives a better overall color balance to the whole image:
 
 <figure class='big-vid'>
-<img src="pano_saturation_masked.png" data-swap-src="pano_contrast_lumi.png" alt="Saturation boost after mask" width="690" height="322"> 
-<figcaption> Saturation set to **+50** through a transition mask (click the image to see the **Luminosity** blend output).
-</figcaption> </figure>
+<img src="pano_saturation_masked.jpg" data-swap-src="pano_contrast_lumi.jpg" alt="Saturation boost after mask" width="960" height="457"> 
+<figcaption>Saturation set to **+50** through a transition mask (click the image to see the **Luminosity** blend output).
+</figcaption>
+</figure>
 
 
 
@@ -405,15 +430,17 @@ Cloning of the Lab "a" channel of the background layer
 
 A copy of the **a** channel is shown below, with the contrast enhanced to better see the tonal variations (click to see the original versions):
 
-<figure>
-<img src="pano_a_contrast.png" data-swap-src="pano_a_channel.png" alt="Saturation boost after mask" width="690" height="322"> 
-<figcaption> The Lab **a** channel (boosted contrast)
-</figcaption> </figure>
+<figure class='big-vid'>
+<img src="pano_a_contrast.jpg" data-swap-src="pano_a_channel.jpg" alt="Saturation boost after mask" width="960" height="457"> 
+<figcaption>
+The Lab **a** channel (boosted contrast)
+</figcaption>
+</figure>
 
 As we have already seen, in the **a** channel the grass is negative and therefore looks dark in the image above. If we want to lighten the grass we therefore need to invert it, to obtain this:
 
-<figure>
-<img src="pano_a_invert_contrast.png" alt="Saturation boost after mask" width="690" height="322"> 
+<figure class='big-vid'>
+<img src="pano_a_invert_contrast.jpg" alt="Saturation boost after mask" width="960" height="457"> 
 <figcaption> The inverted Lab **a** channel (boosted contrast)
 </figcaption> </figure>
 
@@ -421,33 +448,39 @@ Let's now consider the **b** channel: as sursprising as it might seem, the grass
 
 With one exception: the blue sky is very dark in the **b** channel, while the goal is to leave the sky almost unchanged. The solution is to blend the **b** channel into the **a** channel in **Lighten** mode, so that only the **b** pixels that are lighter than the corresponding **a** ones end up in the blended image. The result is shown below (click on the image to see the **b** channel).
 
-<figure>
-<img src="pano_b_lighten_contrast.png" data-swap-src="pano_b_contrast.png" alt="b channel lighten blend" width="690" height="322"> 
-<figcaption> **b** channel blended in **Lighten** mode (boosted contrast, click the image to see the **b** channel itself).
-</figcaption> </figure>
+<figure class='big-vid'>
+<img src="pano_b_lighten_contrast.jpg" data-swap-src="pano_b_contrast.jpg" alt="b channel lighten blend" width="960" height="457"> 
+<figcaption>
+**b** channel blended in **Lighten** mode (boosted contrast, click the image to see the **b** channel itself).
+</figcaption>
+</figure>
 
 And this are the blended **a** and **b** channels with the original contrast:
 
-<figure>
-<img src="pano_b_lighten.png" alt="b channel lighten blend" width="690" height="322"> 
-<figcaption> The final **a** and **b** mask, without contrast correction
-</figcaption> </figure>
+<figure class='big-vid'>
+<img src="pano_b_lighten.jpg" alt="b channel lighten blend" width="960" height="457"> 
+<figcaption>
+The final **a** and **b** mask, without contrast correction
+</figcaption>
+</figure>
 
 The last act is to change the blending mode of the "ab overlay" group to **Overlay**: the grass and trees get some nice "pop", while the sky remains basically unchanged:
 
-<figure>
-<img src="pano_ab_overlay.png" data-swap-src="pano_saturation_masked.png" alt="ab overlay" width="690" height="322"> 
+<figure class='big-vid'>
+<img src="pano_ab_overlay.jpg" data-swap-src="pano_saturation_masked.jpg" alt="ab overlay" width="960" height="457"> 
 <figcaption> Lab channels overlay (click to see the image after the saturation adjustment).
 </figcaption> </figure>
 
 I'm now almost satisfied with the result, except for one thing: the Lab overlay makes the yellow area on the left of the image way too bright. The solution is a gradient mask (horizontal this time) associated to the "ab overlay group", to exclude the left part of the image as shown below:
 
-<img src="pano_ab_overlay_mask.png" alt="overlay blend mask" width="690" height="353">
+<figure class='big-vid'>
+<img src="pano_ab_overlay_mask.jpg" alt="overlay blend mask" width="960" height="491">
+</figure>
 
 The final, masked image is shown here, to be compared with the initial starting point:
 
 <figure class='big-vid'>
-<img src="pano_ab_overlay_masked.png" data-swap-src="pano_+1EV.png" alt="final result" width="690" height="322"> 
+<img src="pano_ab_overlay_masked.jpg" data-swap-src="pano_+1EV.jpg" alt="final result" width="960" height="457"> 
 <figcaption> The image after the masked Lab overlay blend (click to see the initial +1EV version).
 </figcaption> </figure>
 
@@ -456,33 +489,35 @@ The final, masked image is shown here, to be compared with the initial starting 
 
 ## The Final Touch
 
-Through the tutorial I have intentionally pushed the editing quite above what I would personally find acceptable. The idea was to show how far one can go with the techniques I have described; fortunatey, the non-destructive editing allows to go back on our steps and reduce the strength of the various effects until the result looks really ok.
+Through the tutorial I have intentionally pushed the editing quite above what I would personally find acceptable. The idea was to show how far one can go with the techniques I have described; fortunatey, the non-destructive editing allows us to go back on our steps and reduce the strength of the various effects until the result looks really ok.
 
 In this specific case, I have lowered the opacity of the **"contrast"** layer to **90%**, the one of the **"saturation"** layer to **80%** and the one of the **"ab overlay"** group to **40%**. Then, feeling that the **"b channel"** blend was still brightening the yellow areas too much, I have reduced the opacity of the **"b channel"** layer to **70%**.
 
 <figure class='big-vid'>
-<img src="pano_adjusted_opacity.png" data-swap-src="pano_ab_overlay_masked.png" alt="opacity adjustment" width="690" height="322"> 
+<img src="pano_adjusted_opacity.jpg" data-swap-src="pano_ab_overlay_masked.jpg" alt="opacity adjustment" width="960" height="457"> 
 <figcaption> Opacities adjusted for a "softer" edit (click on the image to see the previous version).
 </figcaption> </figure>
 
 Another thing I still did not like in the image was the overall color balance: the grass in the foreground looked a bit too **"emerald"** instead of **"yellowish green"**, therefore I thought that the image could profit of a general warming up of the colors. For that I have added a curves layer at the top of the editing stack, and brought down the middle of the curve in both the **green** and **blue** channels. The move needs to be quite subtle: I brought the middle point down from **50%** to **47%** in the greens and **45%** in the blues, and then I further reduced the opacity of the adjustment to **50%**. Here comes the warmed-up version, compared with the image before:
 
 <figure class='big-vid'>
-<img src="pano_warmer.png" data-swap-src="pano_adjusted_opacity.png" alt="opacity adjustment" width="690" height="322"> 
+<img src="pano_warmer.jpg" data-swap-src="pano_adjusted_opacity.jpg" alt="opacity adjustment" width="960" height="457"> 
 <figcaption> "Warmer" version (click to see the previous version)
 </figcaption> </figure>
 
 At this point I was almost satisfied. However, I still found that the green stuff at the bottom-right of the image attracted too much my attention and distracted the eye. Therefore I darkened the bottom of the image with a slightly curved gradient applied in **"soft light"** blend mode. The gradient was created with the same technique used for blending the various exposures. The transition curve is shown below: in this case, the top part was set to **50% gray** (remember that we blend the gradient in **"soft light"** mode) and the bottom part was moved a bit below 50% to obtain a slightly darkening effect:
 
-<figure>
-<img src="pf_vignetting.png" alt="vignetting gradient" width="690" height="298"> 
-<figcaption> Gradient used for darkening the bottom of the image.
-</figcaption> </figure>
+<figure class='big-vid'>
+<img src="pf_vignetting.png" alt="vignetting gradient" width="960" height="415"> 
+<figcaption>
+Gradient used for darkening the bottom of the image.
+</figcaption>
+</figure>
 
 **It's done!** If you managed to follow me 'till the end, you are now rewarded with the final image in all its glory, that you can again compare with the initial starting point.
 
 <figure class='big-vid'>
-<img src="pano_final2.png" data-swap-src="pano_+1EV-cropped.png" alt="final result" width="690" height="328"> 
+<img src="pano_final2.jpg" data-swap-src="pano_+1EV.jpg" alt="final result" width="960" height="457"> 
 <figcaption> 
 The final image (click to see the initial +1EV version).
 </figcaption>
