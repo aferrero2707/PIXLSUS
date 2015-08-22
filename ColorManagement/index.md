@@ -1,7 +1,7 @@
 ---
 date: 2015-04-24T10:05:29-05:00
-title: A FL/OSS panorama
-sub-title: Creating panoramas with Hugin and PhotoFlow
+title: Color management made easy
+sub-title: Color management made easy
 
 lede-img: 'pano_lede.png'
 lede-attribution: "<a href='http://photoflowblog.blogspot.fr'>Andrea Ferrero</a>"
