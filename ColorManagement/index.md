@@ -13,6 +13,22 @@ author-img: ''
 layout: article
 ---
 
+# Introduction
+I know it's not technical, but I can't help feel that a gentle introduction would help the average reader understand better what they're about to get into... :)
+
+Possibly consider answering these primary questions:
+
+*Why*
+Why should the average photographer care about color management?
+
+*What*
+What is it in relation to what they're accustomed to?  What does it mean to manage color?  etc...
+
+*Who*
+Who should really care about color management?  Everyone (I know *everyone* is a likely answer)?  Practically speaking, who would benefit the most and why (see above)?
+
+These are just the basics, but they're something important as a lede to entice the reader to actually read through the material you're about to hit them over the head with (and believe me - some of them will feel this way).
+
 # RGB is not a Color
 
 Show examples of the same colors in different color spaces, and show why ICC profiles are needed to correctly "interpret" RGB values
