@@ -14,7 +14,7 @@ layout: article
 ---
 
 # Introduction
-The vast majority of imaging devices that we are commonly using (digital cameras, flatbed scanners, computer screens, inkjet printers) represent the image data in terms of RGB triplets. However, the relation between a given *COLOR* and its *RGB REPRESENTATION* is not unique. Each device will represent the same color by different RGB triplets.
+The vast majority of imaging devices that we are commonly using (digital cameras, flatbed scanners, computer screens, inkjet printers) represent the image data in terms of RGB triplets. However, the relation between a given *COLOR* and its *RGB REPRESENTATION* is not unique. Each device will use different RGB values for the same color.
 
 If those differences are not correctly taken into account and COMPENSATED, all sort of weird things can happen... have you ever wondered why your printed photos look totally different from what your image editor is showing on the screen? *THAT'S BECAUSE THEY DON'T TALK THE SAME RGB LANGUAGE!* It is as if your "English" image file was talking with a "French" computer screen and a "German" printer: they don't understand each other, and therefore the message gets "distorted"... unless it gets properly *TRANSLATED* into the native language of each device.
 
